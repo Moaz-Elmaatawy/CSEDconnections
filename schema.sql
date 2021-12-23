@@ -29,10 +29,10 @@ CREATE TABLE `experience` (
   `company` varchar(30) DEFAULT NULL,
   `location` varchar(45) DEFAULT NULL,
   `position` varchar(30) DEFAULT NULL,
-  `start_date` varchar(30) DEFAULT NULL,
-  `end_date` varchar(30) DEFAULT NULL,
+  `start_date` varchar(45) DEFAULT NULL,
+  `end_date` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`email`),
-  CONSTRAINT `email` FOREIGN KEY (`email`) REFERENCES `person` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `email` FOREIGN KEY (`email`) REFERENCES `graduate` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -46,15 +46,14 @@ DROP TABLE IF EXISTS `graduate`;
 CREATE TABLE `graduate` (
   `email` varchar(45) NOT NULL,
   `name` varchar(20) NOT NULL,
-  `Bdate` varchar(30) DEFAULT NULL,
+  `Bdate` varchar(45) DEFAULT NULL,
   `gender` varchar(6) DEFAULT NULL,
   `phone` varchar(14) DEFAULT NULL,
   `password` varchar(30) NOT NULL,
   `imageURL` varchar(100) DEFAULT NULL,
   `about` varchar(300) DEFAULT NULL,
   `grad_year` year DEFAULT NULL,
-  PRIMARY KEY (`email`),
-  CONSTRAINT `e1` FOREIGN KEY (`email`) REFERENCES `person` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -64,7 +63,7 @@ DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student` (
   `email` varchar(45) NOT NULL,
   `name` varchar(20) NOT NULL,
-  `Bdate` varchar(30) DEFAULT NULL,
+  `Bdate` varchar(45) DEFAULT NULL,
   `gender` varchar(6) DEFAULT NULL,
   `phone` varchar(14) DEFAULT NULL,
   `password` varchar(30) NOT NULL,
@@ -73,8 +72,7 @@ CREATE TABLE `student` (
   `current_level` int DEFAULT NULL,
   `expected_grad_year` varchar(4) DEFAULT NULL,
   PRIMARY KEY (`email`),
-  UNIQUE KEY `phone_UNIQUE` (`phone`),
-  CONSTRAINT `e2` FOREIGN KEY (`email`) REFERENCES `person` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `phone_UNIQUE` (`phone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
