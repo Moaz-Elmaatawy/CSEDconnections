@@ -11,15 +11,23 @@ public class Database {
         //Device varibles
         String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
         String username = "root";
-        String password = "";
+        String password = "arduino-010";
 
         System.out.println("Connecting database...");
         
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
 
-            Statement statement=connection.createStatement();  
-            ResultSet result=statement.executeQuery("select * from person");  
+            Statement statement=connection.createStatement();
+
+            int m = statement.executeUpdate("insert into student(email ,name,password) values ('ahmed@gmail.com' , 'ahmed' ,'1234')");
+            if (m==1)
+                System.out.println("inserted successfully ");
+            else
+                System.out.println("insertion failed");
+
+            ResultSet result=statement.executeQuery("select * from student");  
+
             while(result.next())  
                 System.out.println(result.getString("email"));  
                 
