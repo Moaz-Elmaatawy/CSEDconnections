@@ -11,7 +11,7 @@ public class Database {
         //Device varibles
         String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
         String username = "root";
-        String password = "arduino-010";
+        String password = "";
 
         System.out.println("Connecting database...");
         
