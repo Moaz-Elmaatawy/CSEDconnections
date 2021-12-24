@@ -23,32 +23,15 @@ public class displayGraduatesController {
     @PostMapping("/get_graduates")
     public String showgraduates(@RequestBody String contact)   {
         
-        List<ResultSet> grads = database.getGraduates() ;
-        List<DisplayedGrads> displayedGrads = new ArrayList<>();
-        for(ResultSet set : grads){
-            DisplayedGrads gradtemp = new DisplayedGrads();
-            try {
-                gradtemp.company = set.getString("company") ;
-                gradtemp.email = set.getString("email") ;
-                gradtemp.img = set.getString("imageURL") ;
-                gradtemp.location = set.getString("location") ;
-                gradtemp.name = set.getString("name") ;
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-           
-
-            displayedGrads.add(gradtemp) ;
-
-        } 
+        List<DisplayedGrads> grads = database.getGraduates() ;
+        
          //System.out.println(tuple.getString("email"));  
         Gson gson = new Gson();     
        // Type listType = new TypeToken<List<DisplayedGrads>>() {
       //  }.getType(); 
-       java.lang.reflect.Type listType = new TypeToken<List<DisplayedGrads>>(){}.getType() ;
+        java.lang.reflect.Type listType = new TypeToken<List<DisplayedGrads>>(){}.getType() ;
         String json = gson.toJson(grads,listType);
-        return "good" ;
+        return json ;
 
     }
 }

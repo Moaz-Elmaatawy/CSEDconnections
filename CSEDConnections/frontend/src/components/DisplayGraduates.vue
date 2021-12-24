@@ -1,23 +1,20 @@
 <template>
  <div id="container"> 
    
-    
-    
      <h1 >Graduates</h1> 
      
     <div class="category">
     <div id="categorycontainer" v-for="graduate in graduates" :key="graduate.name">
       <img id="img" :src="graduate.img"/>
       <br>
-       <a id="a2"  >{{msg}}</a>
+       <a id="a2"  >{{graduate.name}}</a>
         <br>
-        <a id="a1">${{graduate.email}}</a>
+        <a id="a1">{{graduate.email}}</a>
         <br>
-        <a id="a1">${{graduate.company}}</a>
+        <a id="a1">{{graduate.company}}</a>
         <br>
-        <a id="a1">${{graduate.location}}</a>
+        <a id="a1">{{graduate.location}}</a>
         
-   
     </div>  
     </div>
   </div>
@@ -29,7 +26,6 @@ export default {
    data() {
     return {
      graduates:[],
-      msg:'',
      name: '',
       
     }
@@ -46,7 +42,6 @@ export default {
               
             })
             .then(Response =>  {
-             this.msg = Response.data
               for (var i = 0; i < Response.data.length; i++){
                 var obj = Response.data[i]
                 this.graduates.push(obj)

@@ -50,7 +50,7 @@ CREATE TABLE `graduate` (
   `gender` varchar(6) DEFAULT NULL,
   `phone` varchar(14) DEFAULT NULL,
   `password` varchar(30) NOT NULL,
-  `imageURL` varchar(100) DEFAULT NULL,
+  `imageURL` varchar(1000) DEFAULT NULL,
   `about` varchar(300) DEFAULT NULL,
   `grad_year` year DEFAULT NULL,
   PRIMARY KEY (`email`)
@@ -67,7 +67,7 @@ CREATE TABLE `student` (
   `gender` varchar(6) DEFAULT NULL,
   `phone` varchar(14) DEFAULT NULL,
   `password` varchar(30) NOT NULL,
-  `imageURL` varchar(100) DEFAULT NULL,
+  `imageURL` varchar(1000) DEFAULT NULL,
   `about` varchar(300) DEFAULT NULL,
   `current_level` int DEFAULT NULL,
   `expected_grad_year` varchar(4) DEFAULT NULL,
