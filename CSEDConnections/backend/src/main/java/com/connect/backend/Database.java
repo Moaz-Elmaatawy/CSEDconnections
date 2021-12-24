@@ -6,14 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;  
+import java.util.List;
+
+import com.mysql.cj.Query;  
 
 public class Database {
     private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
     private String username = "root";
     private String password = "arduino-010";
 
-    boolean checkUser(String email ,String password){
+    boolean checkUser(String email ,String pass1word){
         
         System.out.println("Connecting database...");
                 
@@ -25,14 +27,13 @@ public class Database {
             ResultSet result=statement.executeQuery("select email"+
                                                     " from graduate "+ 
                                                     "where email = '" + email +"'"+
-                                                    "AND password='"+password+"'");  
+                                                    " AND password = '"+pass1word+"'");  
 
-            if(result.next())  
-                return true;
+            boolean Exist=result.next();
 
             connection.close();  
             System.out.println("Database connection closed!");
-            return false;
+            return Exist;
         } 
         catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
@@ -53,22 +54,18 @@ public class Database {
                                                     "where email = '" + email+"'");  
 
             
-            try{if(result.getString("email").compareTo(email)==0)  
-                return false;
-            }
-            catch(Exception e){
-                return false;
-            }
+            boolean Exist=result.next();
+            
             connection.close();  
             System.out.println("Database connection closed!");
-            return true;
+            return !Exist;
         } 
         catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
     }
 
-    boolean insertGraduate(Graduate G){
+    boolean insertGraduate(Graduate G ){
         System.out.println("Connecting database...");
         
         try {
@@ -76,8 +73,12 @@ public class Database {
 
             Statement statement=connection.createStatement();
             
+            Experience E=G.experience.get(0);
             try{
-                statement.executeUpdate("insert into graduate values ('"+G.mail+"','"+ G.birhtDate +"','"+ G.gender +"','"+ G.phone +"','"+ G.password +"','"+ G.img +"','"+ G.about+"','"+ G.graduationYear +")" );
+                String query="insert into graduate values ('"+G.mail+"' , '"+G.name+"' , '"+ G.birhtDate +"' , '"+ G.gender +"' , '"+ G.phone +"' , '"+ G.password +"' , '"+ G.img +"' , '"+ G.about+"' , '"+ G.graduationYear + "' )" ;
+                System.out.println(query);
+                statement.executeUpdate(query);
+                statement.executeUpdate("insert into experience values ('"+G.mail+"' , '"+ E.companyName +"' , '"+ E.location +"' , '"+ E.position+"','"+ E.startDate +"','"+ E.endDate+"')" );
             }
             catch(Exception e){
                 System.out.println("insertion failed");

@@ -16,6 +16,7 @@ public class Graduate extends Person {
         this.password = password;
         this.img = img;
         this.graduationYear = graduationYear;
+        experience = new ArrayList<Experience>();
 
     }
 
@@ -33,8 +34,8 @@ public class Graduate extends Person {
         return this.experience;
     }
 
-    public void setExperience(Experience experience) {
-        this.experience.add(experience);
+    public void addExperience(Experience experienceEntity) {
+        this.experience.add(experienceEntity);
     }
     
     
