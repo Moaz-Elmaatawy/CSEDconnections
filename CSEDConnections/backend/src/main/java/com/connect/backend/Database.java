@@ -5,18 +5,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;  
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;  
 
 public class Database {
     String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
     String username = "root";
     String password = "arduino-010";
 
-    public static void main(String[] args) {
-        //Device varibles
-        
-        
-    }
     void checkForanexistingmail(){
         
     }
@@ -50,8 +47,8 @@ public class Database {
         }
     }
 
-    ArrayList<ResultSet> getGraduates(){
-        ArrayList<ResultSet>resultQuery=new ArrayList<>();
+    List<ResultSet> getGraduates(){
+        List<ResultSet> resultQuery= new LinkedList<>();
         System.out.println("Connecting database...");
         
         try {
