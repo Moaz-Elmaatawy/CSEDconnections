@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.List;  
 
 public class Database {
-    String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
-    String username = "root";
-    String password = "arduino-010";
+    private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
+    private String username = "root";
+    private String password = "arduino-010";
+
     boolean checkUser(String email ,String password){
         
         System.out.println("Connecting database...");
@@ -51,9 +52,13 @@ public class Database {
                                                     " from graduate "+ 
                                                     "where email = '" + email+"'");  
 
-            if(result.next())  
+            
+            try{if(result.getString("email").compareTo(email)==0)  
                 return false;
-
+            }
+            catch(Exception e){
+                return false;
+            }
             connection.close();  
             System.out.println("Database connection closed!");
             return true;
@@ -63,29 +68,26 @@ public class Database {
         }
     }
 
-    void checkDataSignin(){
+    boolean insertGraduate(Graduate G){
         System.out.println("Connecting database...");
         
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement=connection.createStatement();
-/*
-            int m = statement.executeUpdate("insert into student(email ,name,password) values ('omar@gmail.com' , 'ahmed' ,'1234')");
-            if (m==1)
-                System.out.println("inserted successfully ");
-            else
+            
+            try{
+                statement.executeUpdate("insert into graduate values ('"+G.mail+"','"+ G.birhtDate +"','"+ G.gender +"','"+ G.phone +"','"+ G.password +"','"+ G.img +"','"+ G.about+"','"+ G.graduationYear +")" );
+            }
+            catch(Exception e){
                 System.out.println("insertion failed");
-*/
-            ResultSet result=statement.executeQuery("select graduate.name ,graduate.email ,graduate.imageURL,experience.company ,experience.location"+
-                                                    " from graduate JOIN experience "+ 
-                                                    "on experience.email=graduate.email;");  
-
-            while(result.next())  
-                System.out.println(result.getString("email"));  
+                return false;
+            }
                 
+             System.out.println("inserted successfully ");  
             connection.close();  
             System.out.println("Database connection closed!");
+            return true;
         } 
         catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
