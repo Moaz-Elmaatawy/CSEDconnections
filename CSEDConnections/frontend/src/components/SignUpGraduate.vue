@@ -216,6 +216,22 @@ export default {
       }
     },
     signUpAsGraduate() {
+      axios.get('http://localhost:8085/api/signUp/graduate',{
+          params: {
+              firstname:this.firstname, lastname:this.lastname, age:this.age,
+              gender:this.gender, phone:this.phone, profilePicture:this.profilePicture,
+              about:this.about, graduationyear:this.graduationyear, position:this.position,
+              company:this.company, location:this.location, email:this.email, pass1word:this.pass1word
+              }        
+          }
+      ).then(Response=>{
+          const Data = Response.data;
+          if(Data !== "Error"){
+            setTimeout(this.account, 3000);
+          }
+      });
+      
+/*
       if(this.msg1 == true && this.msg4 == true) {
         this.information = {firstname:this.firstname, lastname:this.lastname, age:this.age, gender:this.gender, phone:this.phone, profilePicture:this.profilePicture, about:this.about, graduationyear:this.graduationyear, position:this.position, company:this.company, location:this.location, email:this.email, pass1word:this.pass1word}        
         axios.post('http://localhost:8085/signup', {
@@ -228,6 +244,7 @@ export default {
         }
         });
       }
+      */
     },
     backSignUpGraduate() {
         this.$router.push('/Start');
