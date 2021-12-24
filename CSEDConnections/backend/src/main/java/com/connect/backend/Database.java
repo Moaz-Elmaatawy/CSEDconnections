@@ -4,15 +4,24 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;  
+import java.sql.Statement;
+import java.util.ArrayList;  
 
 public class Database {
+    String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
+    String username = "root";
+    String password = "arduino-010";
+
     public static void main(String[] args) {
         //Device varibles
-        String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
-        String username = "root";
-        String password = "arduino-010";
+        
+        
+    }
+    void checkForanexistingmail(){
+        
+    }
 
+    void checkDataSignin(){
         System.out.println("Connecting database...");
         
         try {
@@ -40,16 +49,31 @@ public class Database {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
     }
-    void checkForanexistingmail(){
+
+    ArrayList<ResultSet> getGraduates(){
+        ArrayList<ResultSet>resultQuery=new ArrayList<>();
+        System.out.println("Connecting database...");
         
-    }
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
 
-    void checkDataSignin(){
+            Statement statement=connection.createStatement();
 
-    }
+            ResultSet tuple=statement.executeQuery("select graduate.name ,graduate.email ,graduate.imageURL,experience.company ,experience.location"+
+                                                    " from graduate JOIN experience "+ 
+                                                    "on experience.email=graduate.email;");  
 
-    void getallApearingData(){
-
+            while(tuple.next())
+                resultQuery.add(tuple);  
+            //System.out.println(tuple.getString("email"));  
+                
+            connection.close();  
+            System.out.println("Database connection closed!");
+        } 
+        catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
+        return resultQuery;
     }
 
 }
