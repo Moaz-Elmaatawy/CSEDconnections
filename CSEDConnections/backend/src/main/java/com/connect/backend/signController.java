@@ -27,22 +27,45 @@ public class signController {
     }
 */
     @GetMapping("/signUp/graduate")
-    public String SignUpGraduate(@RequestParam(value = "email")String email,
-                        @RequestParam(value = "firstname")String firstname,
-                        @RequestParam(value = "company")String company,
-                        @RequestParam(value = "location")String location,
-                        @RequestParam(value = "pass1word")String pass1word)
+    public String SignUpGraduate(@RequestParam(value = "name")String name,
+                                @RequestParam(value = "email")String email,
+                                @RequestParam(value = "age")String age,
+                                @RequestParam(value = "gender")String gender,
+                                @RequestParam(value = "profilePicture")String profilePicture,
+                                @RequestParam(value = "about")String about,
+                                @RequestParam(value = "graduationyear")String graduationyear,
+                                @RequestParam(value = "company")String company,
+                                @RequestParam(value = "location")String location,
+                                @RequestParam(value = "position")String position,
+                                @RequestParam(value = "phone")String phone,
+                                @RequestParam(value = "pass1word")String pass1word)
     {
-        System.out.println(email + " " + company);
+        System.out.println(name + " " + age);
+        System.out.println(gender + " " + phone);
+        System.out.println(profilePicture + " " + about);
+        System.out.println(graduationyear + " " + position);
+        System.out.println(company + " " + location);
+        System.out.println(email + " " + pass1word);
          return "true";
     }
 
     @GetMapping("/signUp/student")
-    public String SignUpStudent(@RequestParam(value = "email")String email,
-                        @RequestParam(value = "firstname")String firstname,
-                        @RequestParam(value = "pass1word")String pass1word)
+    public String SignUpStudent(@RequestParam(value = "name")String name,
+                                @RequestParam(value = "email")String email,
+                                @RequestParam(value = "age")String age,
+                                @RequestParam(value = "gender")String gender,
+                                @RequestParam(value = "profilePicture")String profilePicture,
+                                @RequestParam(value = "about")String about,
+                                @RequestParam(value = "level")String level,
+                                @RequestParam(value = "expectedgraduationyear")String expectedgraduationyear,
+                                @RequestParam(value = "phone")String phone,
+                                @RequestParam(value = "pass1word")String pass1word)
     {
-        System.out.println(email + " " + email);
+        System.out.println(name + " " + age);
+        System.out.println(gender + " " + phone);
+        System.out.println(profilePicture + " " + about);
+        System.out.println(expectedgraduationyear + " " + level);
+        System.out.println(email + " " + pass1word);
          return "true";
     }
 /*

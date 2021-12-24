@@ -10,13 +10,8 @@
       <form id="signupformStudent">
 
         <div class="form-group">
-          <label for="user">First Name</label>
-          <input class="rectangle" type="text" v-model="firstname"  placeholder=" First Name" maxlength="15" required/>
-        </div>
-
-        <div class="form-group">
-          <label for="user">Last Name</label>
-          <input class="rectangle" type="text" v-model="lastname"  placeholder=" Last Name" maxlength="15" required/>
+          <label for="user">Name</label>
+          <input class="rectangle" type="text" v-model="name"  placeholder="Name" maxlength="30" required/>
         </div>
 
         <div class="form-group">
@@ -112,8 +107,7 @@ export default {
     return {
       information:[],
       
-      firstname: '',
-      lastname: '',
+      name: '',
       age: '',
       gender: '',
       phone:'',
@@ -215,9 +209,10 @@ export default {
     signUpAsStudent() {
       axios.get('http://localhost:8085/api/signUp/student',{
           params: {
-              firstname:this.firstname, lastname:this.lastname, age:this.age,
+              name:this.name, age:this.age,
               gender:this.gender, phone:this.phone, profilePicture:this.profilePicture,
-              about:this.about, expectedgraduationyear:this.expectedgraduationyear, level: this.level, email:this.email, pass1word:this.pass1word
+              about:this.about, expectedgraduationyear:this.expectedgraduationyear,
+              level: this.level, email:this.email, pass1word:this.pass1word
               }        
           }
       ).then(Response=>{
