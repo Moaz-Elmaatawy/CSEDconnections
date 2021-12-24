@@ -19,14 +19,16 @@ public class Database {
             Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement=connection.createStatement();
-
-            int m = statement.executeUpdate("insert into student(email ,name,password) values ('ahmed@gmail.com' , 'ahmed' ,'1234')");
+/*
+            int m = statement.executeUpdate("insert into student(email ,name,password) values ('omar@gmail.com' , 'ahmed' ,'1234')");
             if (m==1)
                 System.out.println("inserted successfully ");
             else
                 System.out.println("insertion failed");
-
-            ResultSet result=statement.executeQuery("select * from student");  
+*/
+            ResultSet result=statement.executeQuery("select graduate.name ,graduate.email ,graduate.imageURL,experience.company ,experience.location"+
+                                                    " from graduate JOIN experience "+ 
+                                                    "on experience.email=graduate.email;");  
 
             while(result.next())  
                 System.out.println(result.getString("email"));  
