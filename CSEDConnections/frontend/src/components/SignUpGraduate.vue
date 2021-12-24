@@ -34,7 +34,7 @@
 
         <div class="form-group">
           <label for="user">Your Profile Picture URL</label>
-          <input class="rectangle" type="text" v-model="profilePicture"  placeholder=" Your Profile Picture URL" maxlength="200" required/>
+          <input class="rectangle" type="text" v-model="profilePicture"  placeholder=" Your Profile Picture URL" required/>
         </div>     
 
         <div class="form-group">

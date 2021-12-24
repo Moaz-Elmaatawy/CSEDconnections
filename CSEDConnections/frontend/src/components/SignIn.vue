@@ -158,6 +158,8 @@ export default {
                 if(Data == "Successfully Logged In"){
                   this.check = Data ;
                   setTimeout(this.account, 2000);
+                }else {
+                  this.check=Data;
                 }
             });
       }
