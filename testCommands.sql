@@ -19,3 +19,7 @@ insert into experience values("ahmed@gmail.com" , "apple" ,"silicon vally" ,"ceo
 select graduate.name ,graduate.email ,graduate.imageURL,experience.company ,experience.location
 from graduate JOIN experience 
 on experience.email=graduate.email;
+
+select email
+from graduate
+where email="moaz1@gmail.com" AND password="123456"

@@ -6,16 +6,61 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;  
 
 public class Database {
     String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
     String username = "root";
     String password = "arduino-010";
-
-    void checkForanexistingmail(){
+    boolean checkUser(String email ,String password){
         
+        System.out.println("Connecting database...");
+                
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            Statement statement=connection.createStatement();
+
+            ResultSet result=statement.executeQuery("select email"+
+                                                    " from graduate "+ 
+                                                    "where email = '" + email +"'"+
+                                                    "AND password='"+password+"'");  
+
+            if(result.next())  
+                return true;
+
+            connection.close();  
+            System.out.println("Database connection closed!");
+            return false;
+        } 
+        catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
+    }
+
+    boolean checkEmail(String email){
+        
+        System.out.println("Connecting database...");
+                
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            Statement statement=connection.createStatement();
+
+            ResultSet result=statement.executeQuery("select email"+
+                                                    " from graduate "+ 
+                                                    "where email = '" + email+"'");  
+
+            if(result.next())  
+                return false;
+
+            connection.close();  
+            System.out.println("Database connection closed!");
+            return true;
+        } 
+        catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
     }
 
     void checkDataSignin(){
