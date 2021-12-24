@@ -15,4 +15,10 @@ public class Experience {
         this.position = position;
     }
 
+    public Experience(String name, String loc, String pos) {
+        companyName = name;
+        location = loc;
+        position = pos;
+    }
+
 }
