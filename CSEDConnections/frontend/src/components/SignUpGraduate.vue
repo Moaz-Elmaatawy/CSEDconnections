@@ -220,9 +220,11 @@ export default {
           }
       ).then(Response=>{
           const Data = Response.data;
-          if(Data !== "Error"){
-            this.check = "Congratulations! Sign In Now !"
+          if(Data !== "Error" && Data !== "Email existed before!"){
+            this.check = "Congratulations! Sign In Now !";
             setTimeout(this.account, 2000);
+          }else{
+            this.check = Data;
           }
       });
       }

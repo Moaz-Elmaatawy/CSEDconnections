@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*")
 @RequestMapping("api")
 @RestController
 public class signController {
@@ -41,13 +41,16 @@ public class signController {
             @RequestParam(value = "pass1word") String pass1word) {
         Database database = new Database();
         boolean existedmail = database.checkEmail(email);
-        if (existedmail)
+        if (!existedmail)
             return "Email existed before!";
+        
         Graduate grad = new Graduate(name, gender, phone, about, age, email, pass1word, profilePicture, graduationyear);
+		grad.addExperience(new Experience(company, location, position));
+
         if (database.insertGraduate(grad)) {
             return "Signed up Sucssefully!";
         }
-        return "Error!";
+        return "Error";
     }
 
     @GetMapping("/signUp/student")
@@ -70,8 +73,9 @@ public class signController {
             @RequestParam(value = "pass1word") String password) {
         Database database = new Database();
         boolean success = database.checkUser(email, password);
+        System.out.println(success);
         if (success) {
-            return "Signed in Successfully!";
+            return "Successfully Logged In";
         }
         return "email or password is not correct!";
     }

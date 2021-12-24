@@ -22,4 +22,9 @@ on experience.email=graduate.email;
 
 select email
 from graduate
-where email="moaz1@gmail.com" AND password="123456"
+where email="moaz@gmail.com" AND password="1253456";
+
+insert into graduate values ('moaznabil886@gmail.com' , 'Moaz Nabil' , '23-2-2000' , 'M' , '0100000' , '123456879' , 'url' , 'Hi' , '2023' );
+
+select * from graduate;
+select * from experience;

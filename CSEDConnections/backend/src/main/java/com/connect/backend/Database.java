@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.cj.Query;  
+ 
 
 public class Database {
     private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
