@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8082")
 @RequestMapping("api")
 @RestController
 public class signController {
@@ -81,11 +81,11 @@ public class signController {
 @GetMapping("/signin")
     public String Login(@RequestParam(value = "email")String Emailaddress,
                       @RequestParam(value = "pass1word")String password)
-    { System.out.println("Name");
+    { /*System.out.println("Name");
         //String access=this.services.login(Emailaddress,password);
         //this.services.getUser();
-        String access = "7mada kofta";
-        return access;
+        String access = "7mada kofta";*/
+        return "true";
     }
 
 }

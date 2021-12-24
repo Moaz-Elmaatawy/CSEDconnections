@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-       <span id="check" >{{check}}</span> 
 
     <div id="app" class="signup">
     </div>
@@ -22,9 +21,9 @@
         <div class="form-group">
           <label for="user">Gender</label>
           <section>
-          <input type="radio" v-model="gender" value="Male" required> Male 
+          <input type="radio" v-model="gender" value="Male" > Male 
           <a-input-search style='padding-right: 200px'/>
-          <input type="radio" v-model="gender" value="Female" required> Female
+          <input type="radio" v-model="gender" value="Female" > Female
           </section>
         </div>
 
@@ -87,8 +86,11 @@
         </div>
         
         <div class="form-group">
-        <a href="#1" @click=backSignUpGraduate()> Back --></a>
+        <a href="#1" @click=backSignUpGraduate()> Back</a>
         </div>
+        <br>
+        <span id="check" >{{check}}</span> 
+
 
       </form>
 
@@ -150,21 +152,18 @@ export default {
     pass1word: function(value) {
       this.check_password_length(value);
       this.check_passwords_match();
-    },/*
-    pass2word: function(value) {
+    },
+    pass2word: function() {
       this.check_passwords_match();
-    }*/
+    }
   },
 
   methods: {
     account() {
-      var x = document.getElementById("insideAccount");
-      x.style.display = "block";
-      var y = document.getElementById("app");
-      y.style.display = "none"
+        this.$router.push('/Start');
     },
-    /*emailCheck(value) {
-      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+    emailCheck(value) {
+      if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value)) {
         this.msg4 = true;
         this.msg5 = false;
         this.email1_msg = '';
@@ -176,7 +175,7 @@ export default {
         this.email1_msg = '';
         this.email2_msg = 'Invalid Email (example@example.example)';
       }
-    },*/
+    },
     check_password_length(value) {
       var n= value.length;
       if (n < 6 && n > 0) {
@@ -210,7 +209,8 @@ export default {
       }
     },
     signUpAsGraduate() {
-      axios.get('http://localhost:8085/api/signUp/graduate',{
+      if(this.msg1 == true && this.msg4 == true) {
+        axios.get('http://localhost:8085/api/signUp/graduate',{
           params: {
               name:this.name, age:this.age,
               gender:this.gender, phone:this.phone, profilePicture:this.profilePicture,
@@ -221,24 +221,11 @@ export default {
       ).then(Response=>{
           const Data = Response.data;
           if(Data !== "Error"){
-            setTimeout(this.account, 3000);
+            this.check = "Congratulations! Sign In Now !"
+            setTimeout(this.account, 2000);
           }
       });
-      
-/*
-      if(this.msg1 == true && this.msg4 == true) {
-        this.information = {firstname:this.firstname, lastname:this.lastname, age:this.age, gender:this.gender, phone:this.phone, profilePicture:this.profilePicture, about:this.about, graduationyear:this.graduationyear, position:this.position, company:this.company, location:this.location, email:this.email, pass1word:this.pass1word}        
-        axios.post('http://localhost:8085/signup', {
-        body: this.information
-        })
-        .then(Response =>  {
-        this.check= Response.data;
-        if(this.check !== "This E-mail Is Already Taken") {
-          setTimeout(this.account, 3000);
-        }
-        });
       }
-      */
     },
     backSignUpGraduate() {
         this.$router.push('/Start');
@@ -355,7 +342,7 @@ form .form-group label {
 }
 #check {
   font-size: 0.7cm;
-  color: rgb(231, 231, 231);
+  color: rgb(8, 184, 23);
 }
 
 #describe {

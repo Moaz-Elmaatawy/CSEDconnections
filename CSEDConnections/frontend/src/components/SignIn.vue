@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-        <a href="#1" @click=backSignIn()>back --> </a>
+        <a href="#1" @click=backSignIn()>Back </a>
         </div>
 
       </form>
@@ -75,7 +75,7 @@ export default {
       msg4: false,
       msg5: false,
       
-      check:"llllll",
+      check:"",
     }
   },
 
@@ -90,21 +90,18 @@ export default {
     pass1word: function(value) {
       this.check_password_length(value);
       this.check_passwords_match();
-    },/*
-    pass2word: function(value) {
+    },
+    pass2word: function() {
       this.check_passwords_match();
-    }*/
+    }
   },
 
   methods: {
     account() {
-      var x = document.getElementById("insideAccount");
-      x.style.display = "block";
-      var y = document.getElementById("app");
-      y.style.display = "none"
+         this.$router.push('/DisplayGraduates');
     },
-    /*emailCheck(value) {
-      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+    emailCheck(value) {
+      if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value)) {
         this.msg4 = true;
         this.msg5 = false;
         this.email1_msg = '';
@@ -116,7 +113,7 @@ export default {
         this.email1_msg = '';
         this.email2_msg = 'Invalid Email (example@example.example)';
       }
-    },*/
+    },
     check_password_length(value) {
       var n= value.length;
       if (n < 6 && n > 0) {
@@ -150,7 +147,7 @@ export default {
       }
     },
     signIn(){
-      this.check = "ok111111111111";
+      if(this.msg4 == true ) {
             axios.get('http://localhost:8085/api/signin',{
                 params: {
                     email:this.email,
@@ -158,27 +155,13 @@ export default {
                 }
             }).then(Response=>{
                 const Data = Response.data;
-                this.check = Data ;
-                console.log(Data);
-                if(Data == "Successfully Log in"){
-                   // setTimeout(this.gomainpage, 1000);
+                if(Data == "Successfully Logged In"){
+                  this.check = Data ;
+                  setTimeout(this.account, 2000);
                 }
             });
-    },
-    /*signIn() {
-      if(this.msg4 == true ) {
-        this.information = {email:this.email, pass1word:this.pass1word}
-        axios.post('http://localhost:8085/signin', {
-         body: this.information
-        })
-        .then(Response =>  {
-        this.check= Response.data;
-        if(this.check !== "Alert: Invalid Email or Password") {
-          setTimeout(this.account, 3000);
-        }
-        });
       }
-    },*/
+    },
     backSignIn() {
         this.$router.push('/Start');
     },
