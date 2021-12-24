@@ -71,8 +71,7 @@ CREATE TABLE `student` (
   `about` varchar(300) DEFAULT NULL,
   `current_level` int DEFAULT NULL,
   `expected_grad_year` varchar(4) DEFAULT NULL,
-  PRIMARY KEY (`email`),
-  UNIQUE KEY `phone_UNIQUE` (`phone`)
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
