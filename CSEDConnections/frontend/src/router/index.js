@@ -32,7 +32,7 @@ export default new Router({
         component: SignUpStudent 
       },
       {
-        path: '/Start',
+        path: '/',
         name: 'Start',
         component: Start 
       },

@@ -163,7 +163,7 @@ export default {
       }
     },
     backSignIn() {
-        this.$router.push('/Start');
+        this.$router.push('/');
     },
 
   },

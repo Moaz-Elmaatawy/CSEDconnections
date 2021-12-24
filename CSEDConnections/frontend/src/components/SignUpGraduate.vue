@@ -228,7 +228,7 @@ export default {
       }
     },
     backSignUpGraduate() {
-        this.$router.push('/Start');
+        this.$router.push('/');
     },
   },
 }

@@ -222,7 +222,7 @@ export default {
       }
     },
     backSignUpStudent() {
-        this.$router.push('/Start');
+        this.$router.push('/');
     },
   },
 }
