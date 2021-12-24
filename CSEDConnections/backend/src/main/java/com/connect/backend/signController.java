@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("api")
 @RestController
 public class signController {
@@ -33,15 +33,25 @@ public class signController {
     }
 */
     @GetMapping("/signUp/graduate")
-    public String SignUp(@RequestParam(value = "email")String email,
+    public String SignUpGraduate(@RequestParam(value = "email")String email,
                         @RequestParam(value = "firstname")String firstname,
                         @RequestParam(value = "company")String company,
                         @RequestParam(value = "location")String location,
                         @RequestParam(value = "pass1word")String pass1word)
     {
         System.out.println(email + " " + company);
-         return "ture";
+         return "true";
     }
+
+    @GetMapping("/signUp/student")
+    public String SignUpStudent(@RequestParam(value = "email")String email,
+                        @RequestParam(value = "firstname")String firstname,
+                        @RequestParam(value = "pass1word")String pass1word)
+    {
+        System.out.println(email + " " + email);
+         return "true";
+    }
+/*
 /*
     @PostMapping("/addContact")
     public String addContact(@RequestBody Contact contact)
@@ -49,4 +59,16 @@ public class signController {
         return this.services.addContact(contact);
     }
 */
+
+
+@GetMapping("/signin")
+    public String Login(@RequestParam(value = "email")String Emailaddress,
+                      @RequestParam(value = "pass1word")String password)
+    { System.out.println("Name");
+        //String access=this.services.login(Emailaddress,password);
+        //this.services.getUser();
+        String access = "7mada kofta";
+        return access;
+    }
+
 }
