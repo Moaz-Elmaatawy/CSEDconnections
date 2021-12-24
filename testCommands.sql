@@ -1,10 +1,15 @@
 use csedconnections;
-insert into graduate values ("moaz1@gmail.com", "moaz" , "2000-02-23" , "M" , "01021695101" , "123456" ,"url" ,"Hi i am moaz","2023");
-insert into graduate values ("omar@gmail.com", "moaz" , "2000-02-23" , "M" , "01021695102" , "123456" ,"url" ,"Hi i am moaz","2023");
-insert into graduate values ("moaz3@gmail.com", "moaz" , "2000-02-23" , "M" , "01021695103" , "123456" ,"url" ,"Hi i am moaz","2023");
-insert into graduate values ("moa4z@gmail.com", "moaz" , "2000-02-23" , "M" , "01021695104" , "123456" ,"url" ,"Hi i am moaz","2023");
-insert into graduate values ("ahmed@gmail.com", "moaz" , "2000-02-23" , "M" , "01021695104" , "123456" ,"url" ,"Hi i am moaz","2023");
-insert into graduate values ("abelrahman@gmail.com", "moaz" , "2000-02-23" , "M" , "01021695104" , "123456" ,"url" ,"Hi i am moaz","2023");
+
+
+
+insert into graduate values ("moaz1@gmail.com", "moaz" , "2000-02-23" , "M" , "01021695101" , "123456" ,"https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg
+" ,"Hi i am moaz","2023");
+insert into graduate values ("omar@gmail.com", "moaz" , "2000-02-23" , "M" , "01021695102" , "123456" ,"https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Steve_Jobs.jpg/527px-Steve_Jobs.jpg
+" ,"Hi i am moaz","2023");
+insert into graduate values ("ahmed@gmail.com", "moaz" , "2000-02-23" , "M" , "01021695104" , "123456" ,"https://images.moneycontrol.com/static-mcnews/2020/02/BILL-GATES-770x433.jpg?impolicy=website&width=770&height=431
+" ,"Hi i am moaz","2023");
+insert into graduate values ("abelrahman@gmail.com", "moaz" , "2000-02-23" , "M" , "01021695104" , "123456" ,"https://assets.entrepreneur.com/content/3x2/2000/1626297217-sundar-pichai-4542.jpeg?crop=4:3
+" ,"Hi i am moaz","2023");
 
 insert into experience values("moaz1@gmail.com" , "google" ,"silicon vally" ,"ceo" ,"2024","20--");
 insert into experience values("omar@gmail.com" , "google" ,"silicon vally" ,"ceo" ,"2023","20--");
