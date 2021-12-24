@@ -5,18 +5,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;  
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;  
 
 public class Database {
     String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
     String username = "root";
     String password = "arduino-010";
 
-    public static void main(String[] args) {
-        //Device varibles
-        
-        
-    }
     void checkForanexistingmail(){
         
     }
@@ -50,8 +47,9 @@ public class Database {
         }
     }
 
-    ArrayList<ResultSet> getGraduates(){
-        ArrayList<ResultSet>resultQuery=new ArrayList<>();
+    List<DisplayedGrads> getGraduates(){
+        List<DisplayedGrads> displayedGrads = new ArrayList<>();
+
         System.out.println("Connecting database...");
         
         try {
@@ -63,17 +61,34 @@ public class Database {
                                                     " from graduate JOIN experience "+ 
                                                     "on experience.email=graduate.email;");  
 
-            while(tuple.next())
-                resultQuery.add(tuple);  
-            //System.out.println(tuple.getString("email"));  
+            
+            
+            
+            while(tuple.next()){
+                DisplayedGrads gradtemp = new DisplayedGrads();
+                try {
+                    gradtemp.company = tuple.getString("company") ;
+                    gradtemp.email = tuple.getString("email") ;
+                    gradtemp.img = tuple.getString("imageURL") ;
+                    gradtemp.location = tuple.getString("location") ;
+                    gradtemp.name = tuple.getString("name") ;
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 
+                //System.out.println(gradtemp.name);
+                displayedGrads.add(gradtemp) ;
+    
+            } 
+            
             connection.close();  
             System.out.println("Database connection closed!");
         } 
         catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
-        return resultQuery;
+        return displayedGrads;
     }
 
 }
