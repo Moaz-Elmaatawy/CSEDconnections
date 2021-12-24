@@ -75,7 +75,7 @@ export default {
       msg4: false,
       msg5: false,
       
-      check:"",
+      check:"llllll",
     }
   },
 
@@ -149,7 +149,23 @@ export default {
           }
       }
     },
-    signIn() {
+    signIn(){
+      this.check = "ok111111111111";
+            axios.get('http://localhost:8085/api/signin',{
+                params: {
+                    email:this.email,
+                    pass1word:this.pass1word
+                }
+            }).then(Response=>{
+                const Data = Response.data;
+                this.check = Data ;
+                console.log(Data);
+                if(Data == "Successfully Log in"){
+                   // setTimeout(this.gomainpage, 1000);
+                }
+            });
+    },
+    /*signIn() {
       if(this.msg4 == true ) {
         this.information = {email:this.email, pass1word:this.pass1word}
         axios.post('http://localhost:8085/signin', {
@@ -162,7 +178,7 @@ export default {
         }
         });
       }
-    },
+    },*/
     backSignIn() {
         this.$router.push('/Start');
     },
