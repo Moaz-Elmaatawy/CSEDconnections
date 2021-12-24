@@ -44,6 +44,8 @@ public class signController {
         if (existedmail)
             return "Email existed before!";
         Graduate grad = new Graduate(name, gender, phone, about, age, email, pass1word, profilePicture, graduationyear);
+        grad.experience = new Arraylist<>();
+        grad.experience.add(new Experience(company, location, position));
         if (database.insertGraduate(grad)) {
             return "Signed up Sucssefully!";
         }
