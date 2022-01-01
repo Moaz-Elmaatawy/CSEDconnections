@@ -1,12 +1,13 @@
-package com.connect.backend;
+package com.connect.backend.Controllers;
 
 import java.util.ArrayList;
 
 public class Graduate extends Person {
-    String graduationYear;
-    ArrayList<Experience> experience;
+    public String graduationYear;
+    public ArrayList<Experience> experience;
 
-    public Graduate(String name, String gender, String phone, String about, String birhtDate, String mail, String password, String img ,String graduationYear ) {
+    public Graduate(String name, String gender, String phone, String about, String birhtDate, String mail,
+            String password, String img, String graduationYear) {
         this.name = name;
         this.gender = gender;
         this.phone = phone;
@@ -19,8 +20,6 @@ public class Graduate extends Person {
         experience = new ArrayList<Experience>();
 
     }
-
-    
 
     public String getGraduationYear() {
         return this.graduationYear;
@@ -37,6 +36,5 @@ public class Graduate extends Person {
     public void addExperience(Experience experienceEntity) {
         this.experience.add(experienceEntity);
     }
-    
-    
+
 }

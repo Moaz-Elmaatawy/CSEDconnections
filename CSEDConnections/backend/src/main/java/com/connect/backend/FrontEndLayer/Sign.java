@@ -1,4 +1,9 @@
-package com.connect.backend;
+package com.connect.backend.FrontEndLayer;
+
+import com.connect.backend.Controllers.Experience;
+import com.connect.backend.Controllers.Graduate;
+import com.connect.backend.Controllers.SignController;
+import com.connect.backend.DatabaseLayer.Database;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 @RequestMapping("api")
 @RestController
-public class signController {
+public class Sign {
 
     /*
      * @PostMapping("/signup")
@@ -27,7 +32,7 @@ public class signController {
      * }
      */
     @GetMapping("/signUp/graduate")
-    public String SignUpGraduate(@RequestParam(value = "name") String name,
+    public String signUpGraduate(@RequestParam(value = "name") String name,
             @RequestParam(value = "email") String email,
             @RequestParam(value = "age") String age,
             @RequestParam(value = "gender") String gender,
@@ -39,16 +44,16 @@ public class signController {
             @RequestParam(value = "position") String position,
             @RequestParam(value = "phone") String phone,
             @RequestParam(value = "pass1word") String pass1word) {
-        Database database = new Database();
-        boolean existedmail = database.checkEmail(email);
-        if (!existedmail)
-            return "Email existed before!";
-        
-        Graduate grad = new Graduate(name, gender, phone, about, age, email, pass1word, profilePicture, graduationyear);
-		grad.addExperience(new Experience(company, location, position));
 
-        if (database.insertGraduate(grad)) {
+        System.out.println("signup!!1");
+        Graduate grad = new Graduate(name, gender, phone, about, age, email, pass1word, profilePicture, graduationyear);
+        SignController controller = new SignController('G');
+        int result = controller.signUp(grad);
+        System.out.println("signup!!2");
+        if (result == 0) {
             return "Signed up Sucssefully!";
+        } else if (result == 2) {
+            return "Email existed before!";
         }
         return "Error";
     }
@@ -67,14 +72,23 @@ public class signController {
         return "true";
     }
 
-
-    @GetMapping("/signin")
-    public String Login(@RequestParam(value = "email") String email,
+    @GetMapping("/signinGrad")
+    public String signInGrad(@RequestParam(value = "email") String email,
             @RequestParam(value = "pass1word") String password) {
-        Database database = new Database();
-        boolean success = database.checkUser(email, password);
-        System.out.println(success);
-        if (success) {
+
+        SignController controller = new SignController('G');
+        if (controller.signIn(email, password)) {
+            return "Successfully Logged In";
+        }
+        return "email or password is not correct!";
+    }
+
+    @GetMapping("/signinStudent")
+    public String signInStudent(@RequestParam(value = "email") String email,
+            @RequestParam(value = "pass1word") String password) {
+
+        SignController controller = new SignController('S');
+        if (controller.signIn(email, password)) {
             return "Successfully Logged In";
         }
         return "email or password is not correct!";
