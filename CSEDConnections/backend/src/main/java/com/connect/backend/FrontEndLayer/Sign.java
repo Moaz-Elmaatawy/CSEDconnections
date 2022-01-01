@@ -49,7 +49,7 @@ public class Sign {
         Graduate grad = new Graduate(name, gender, phone, about, age, email, pass1word, profilePicture, graduationyear);
         SignController controller = new SignController('G');
         int result = controller.signUp(grad);
-        System.out.println("signup!!2");
+        System.out.println(result + "signup!!2");
         if (result == 0) {
             return "Signed up Sucssefully!";
         } else if (result == 2) {

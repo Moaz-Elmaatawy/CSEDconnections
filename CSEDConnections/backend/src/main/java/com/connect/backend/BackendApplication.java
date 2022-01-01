@@ -1,4 +1,4 @@
-package com.connect.backend.Controllers;
+package com.connect.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

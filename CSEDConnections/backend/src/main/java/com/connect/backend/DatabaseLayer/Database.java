@@ -58,7 +58,9 @@ public class Database {
             Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();
-
+            System.out.println("select email" +
+                    " from " + tableName +
+                    " where email = '" + email + "'");
             ResultSet result = statement.executeQuery("select email" +
                     " from " + tableName +
                     " where email = '" + email + "'");
@@ -67,7 +69,7 @@ public class Database {
 
             connection.close();
             System.out.println("Database connection closed!");
-            return !exist;
+            return exist;
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
