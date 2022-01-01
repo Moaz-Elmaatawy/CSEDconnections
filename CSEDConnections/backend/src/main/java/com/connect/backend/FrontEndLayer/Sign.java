@@ -48,6 +48,7 @@ public class Sign {
         System.out.println("signup!!1");
         Graduate grad = new Graduate(name, gender, phone, about, age, email, pass1word, profilePicture, graduationyear);
         SignController controller = new SignController('G');
+        grad.addExperience(new Experience(company, location, position));
         int result = controller.signUp(grad);
         System.out.println(result + "signup!!2");
         if (result == 0) {

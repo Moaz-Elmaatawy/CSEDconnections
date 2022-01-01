@@ -92,6 +92,7 @@ public class Database {
                         + graduate.about + "' , '" + graduate.graduationYear + "' )";
                 System.out.println(query);
                 statement.executeUpdate(query);
+                System.out.println("hhh");
                 statement.executeUpdate(
                         "insert into experience values ('" + graduate.mail + "' , '" + experience.companyName + "' , '"
                                 + experience.location + "' , '" + experience.position + "','" + experience.startDate
