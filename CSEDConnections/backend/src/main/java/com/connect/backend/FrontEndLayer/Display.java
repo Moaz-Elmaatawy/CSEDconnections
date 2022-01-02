@@ -2,6 +2,7 @@ package com.connect.backend.FrontEndLayer;
 
 import java.util.List;
 
+import com.connect.backend.Controllers.DisplayController;
 import com.connect.backend.Controllers.DisplayedGrads;
 import com.connect.backend.DatabaseLayer.Database;
 import com.google.gson.Gson;
@@ -14,13 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Display {
-    Database database = new Database();
 
     @CrossOrigin("*")
     @PostMapping("/get_graduates")
     public String showgraduates(@RequestBody String contact) {
-
-        List<DisplayedGrads> grads = database.getGraduates();
+        DisplayController controller = new DisplayController();
+        List<DisplayedGrads> grads = controller.Display(null);
 
         // System.out.println(tuple.getString("email"));
         Gson gson = new Gson();

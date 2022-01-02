@@ -6,18 +6,22 @@ public class Graduate extends Person {
     public String graduationYear;
     public ArrayList<Experience> experience;
 
-    public Graduate(String name, String gender, String phone, String about, String birhtDate, String mail,
+    public Graduate() {
+        experience = new ArrayList<>();
+    }
+
+    public Graduate(String name, String gender, String phone, String about, String age, String mail,
             String password, String img, String graduationYear) {
         this.name = name;
         this.gender = gender;
         this.phone = phone;
         this.about = about;
-        this.birhtDate = birhtDate;
+        this.age = age;
         this.mail = mail;
         this.password = password;
         this.img = img;
         this.graduationYear = graduationYear;
-        experience = new ArrayList<Experience>();
+        experience = new ArrayList<>();
 
     }
 

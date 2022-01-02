@@ -34,11 +34,12 @@ public class Database {
             Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();
-
-            ResultSet result = statement.executeQuery("select email" +
+            String q = "select email" +
                     " from " + tableName +
                     " where email = '" + email + "'" +
-                    " AND password = '" + pass + "'");
+                    " AND password = '" + pass + "'";
+            System.out.println(q);
+            ResultSet result = statement.executeQuery(q);
 
             boolean exist = result.next();
 
@@ -86,7 +87,7 @@ public class Database {
             Experience experience = graduate.experience.get(0);
             try {
                 String query = "insert into graduate values ('" + graduate.mail + "' , '" + graduate.name + "' , '"
-                        + graduate.birhtDate
+                        + graduate.age
                         + "' , '" + graduate.gender + "' , '" + graduate.phone + "' , '" + graduate.password + "' , '"
                         + graduate.img + "' , '"
                         + graduate.about + "' , '" + graduate.graduationYear + "' )";
@@ -128,8 +129,8 @@ public class Database {
         }
     }
 
-    public List<DisplayedGrads> getGraduates() {
-        List<DisplayedGrads> displayedGrads = new ArrayList<>();
+    public List<Graduate> getGraduates() {
+        List<Graduate> displayedGrads = new ArrayList<>();
 
         System.out.println("Connecting database...");
 
@@ -139,25 +140,36 @@ public class Database {
             Statement statement = connection.createStatement();
 
             ResultSet tuple = statement.executeQuery(
-                    "select graduate.name ,graduate.email ,graduate.imageURL,experience.company ,experience.location" +
-                            " from graduate JOIN experience " +
-                            "on experience.email=graduate.email;");
+                    "select * from graduate");
 
             while (tuple.next()) {
-                DisplayedGrads gradtemp = new DisplayedGrads();
+                Graduate grad = new Graduate();
                 try {
-                    gradtemp.company = tuple.getString("company");
-                    gradtemp.email = tuple.getString("email");
-                    gradtemp.img = tuple.getString("imageURL");
-                    gradtemp.location = tuple.getString("location");
-                    gradtemp.name = tuple.getString("name");
+                    grad.mail = tuple.getString("email");
+                    grad.img = tuple.getString("imageURL");
+                    grad.name = tuple.getString("name");
+                    grad.gender = tuple.getString("gender");
+                    grad.phone = tuple.getString("phone");
+                    grad.about = tuple.getString("about");
+                    grad.age = tuple.getString("Bdate");
+                    grad.graduationYear = tuple.getString("grad_year");
+
+                    ResultSet extuple = statement.executeQuery(
+                            "select * from experience where email = '" + grad.mail + "'");
+                    while (extuple.next()) {
+                        Experience experience = new Experience(extuple.getString("company"),
+                                extuple.getString("location"), extuple.getString("start_date"),
+                                extuple.getString("end_date"), extuple.getString("position"));
+                        grad.experience.add(experience);
+
+                    }
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
 
                 // System.out.println(gradtemp.name);
-                displayedGrads.add(gradtemp);
+                displayedGrads.add(grad);
 
             }
 

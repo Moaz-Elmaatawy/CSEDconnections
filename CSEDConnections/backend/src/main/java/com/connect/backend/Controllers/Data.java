@@ -1,5 +1,7 @@
 package com.connect.backend.Controllers;
 
+import java.util.List;
+
 import com.connect.backend.DatabaseLayer.Database;
 
 public class Data {
@@ -24,5 +26,9 @@ public class Data {
 
     public boolean createnewStudent(Student newStudent) {
         return database.signUp(newStudent);
+    }
+
+    public List<Graduate> startdisplay() {
+        return database.getGraduates();
     }
 }
