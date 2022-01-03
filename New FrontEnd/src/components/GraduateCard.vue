@@ -17,10 +17,11 @@ export default {
     name: { type: String, default: "NA" },
     email: { type: String, default: "NA" },
     company: { type: String, default: "NA" },
-    location: { type: String, default: "NA" },
+    location: { type: String, default: "NA" }
   },
+  
   methods: {
-    
+
     gotoDetails() {
       this.$router.push({
         name: "Details",
