@@ -37,34 +37,20 @@ public class Display {
         return json;
 
     }
+
     Graduate ReqGraduate ;
-    @GetMapping("/opengraduate")
+    @GetMapping("/getGraduate")
     public String opengraduate(@RequestParam(value = "email") String email ) {
+        System.out.println("sssssssssssssssssssssss " + email );
         DisplayController controller = new DisplayController();
         List<Graduate> graduate = controller.graduatecontroller(email) ;
         ReqGraduate = graduate.get(0) ;
-       return "done" ;
-    }
 
-    @CrossOrigin("*")
-    @PostMapping("/get_graduate_details")
-    public String GetGraduateDetails(@RequestBody String info) {
-        
-
-        // System.out.println(tuple.getString("email"));
         Gson gson = new Gson();
-        // Type listType = new TypeToken<List<DisplayedGrads>>() {
-        // }.getType();
         java.lang.reflect.Type type = new TypeToken<Graduate>() {
         }.getType();
         String json = gson.toJson(ReqGraduate, type);
-        return json;
-
-    }
-
-
-    
-
-
-    
+        System.out.println(json);
+        return "dddddd";
+    }    
 }

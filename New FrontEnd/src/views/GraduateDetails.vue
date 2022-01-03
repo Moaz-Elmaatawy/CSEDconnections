@@ -31,7 +31,7 @@
                   </div>
                   <div><b>Location: </b>{{ graduate.location }}</div>
                   <div><b>Position: </b>{{ graduate.position }}</div>
-                  <div><b>Contact: </b>{{ graduate.email }}</div>
+                  <div><b>Contact: </b>{{ graduate.mail }}</div>
                   <div><b>Phone: </b>{{ graduate.phone }}</div>
                   <div><b>about: </b>{{ graduate.about }}</div>
                 </div>
@@ -86,24 +86,20 @@
 </template>
 
 <script>
-//import axios from 'axios';
+import axios from 'axios';
 
 export default {
   data() {
     return {
       graduate: {},
-      graduateEmail: null,
+      graduateEmail: "",
     };
   },
   mounted() {
     
     this.init();
   },
-  watch:{
-    updata: function() {
-      this.getGraduateDetail();
-    }
-  },
+
   methods: {
     init() {
       if (this.$route.params.code) {
@@ -113,18 +109,20 @@ export default {
       }  
     },
     getGraduateDetail() {
-      /*
-      axios.get('http://localhost:8085/api/getGraduate',{
-              params: {
-                email:this.graduateEmail
-              }
-            }).then(Response=>{
-                this.graduate= Response.data;
-            });
-            */
+      axios.get('http://localhost:8085/getGraduate',{
+            params: {
+              email:this.graduateEmail
+            }
+        }).then(Response=>{
+            console.log("ddddddddddd");
+            console.log(Response.data);
+            this.graduate= Response.data;
+        });
+
+      console.log(this.graduate.graduationYear);
       //if(this.graduate.img == "url"){
-        //this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
-        //console.log(this.graduate.img);
+      //this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
+      //console.log(this.graduate.img);
       //}
       this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
     },
