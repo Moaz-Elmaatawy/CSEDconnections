@@ -140,9 +140,12 @@ public class Database {
             Statement statement = connection.createStatement();
 
             ResultSet tuple = statement.executeQuery(
-                    "select * from graduate");
+                    "select * " +
+                            "from graduate JOIN experience " +
+                            "on experience.email=graduate.email");
 
             while (tuple.next()) {
+                System.out.println("33333333333333");
                 Graduate grad = new Graduate();
                 try {
                     grad.mail = tuple.getString("email");
@@ -153,16 +156,23 @@ public class Database {
                     grad.about = tuple.getString("about");
                     grad.age = tuple.getString("Bdate");
                     grad.graduationYear = tuple.getString("grad_year");
-
-                    ResultSet extuple = statement.executeQuery(
-                            "select * from experience where email = '" + grad.mail + "'");
-                    while (extuple.next()) {
-                        Experience experience = new Experience(extuple.getString("company"),
-                                extuple.getString("location"), extuple.getString("start_date"),
-                                extuple.getString("end_date"), extuple.getString("position"));
-                        grad.experience.add(experience);
-
-                    }
+                    Experience experience = new Experience(tuple.getString("company"),
+                            tuple.getString("location"), tuple.getString("start_date"),
+                            tuple.getString("end_date"), tuple.getString("position"));
+                    grad.experience.add(experience);
+                    System.out.println("1111111111111111111");
+                    /*
+                     * ResultSet extuple = statement.executeQuery(
+                     * "select * from experience where email = '" + grad.mail + "'");
+                     * while (extuple.next()) {
+                     * Experience experience = new Experience(extuple.getString("company"),
+                     * extuple.getString("location"), extuple.getString("start_date"),
+                     * extuple.getString("end_date"), extuple.getString("position"));
+                     * grad.experience.add(experience);
+                     * 
+                     * }
+                     */
+                    System.out.println("2222222222222222222");
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
