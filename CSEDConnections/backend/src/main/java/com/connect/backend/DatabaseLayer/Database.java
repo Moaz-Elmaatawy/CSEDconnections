@@ -14,9 +14,9 @@ import com.connect.backend.Controllers.Graduate;
 import com.connect.backend.Controllers.Student;
 
 public class Database {
-    private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
+    private String url = "jdbc:mysql://127.0.0.1:3300/csedconnections";
     private String username = "root";
-    private String password = "root";
+    private String password = "";
     private String tableName;
 
     public Database() {
@@ -190,5 +190,69 @@ public class Database {
         }
         return displayedGrads;
     }
+    public List<Graduate> opengraduateDB(String email) {
+        List<Graduate> displayedGrads = new ArrayList<>();
+
+        System.out.println("Connecting database...");
+
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            Statement statement = connection.createStatement();
+
+            ResultSet tuple = statement.executeQuery(
+                    "select * " +
+                            "from graduate JOIN experience " +
+                            "on experience.email=graduate.email" +
+                            " where graduate.email='" + email +"'"
+                            );
+
+            while (tuple.next()) {
+                System.out.println("33333333333333");
+                Graduate grad = new Graduate();
+                try {
+                    grad.mail = tuple.getString("email");
+                    grad.img = tuple.getString("imageURL");
+                    grad.name = tuple.getString("name");
+                    grad.gender = tuple.getString("gender");
+                    grad.phone = tuple.getString("phone");
+                    grad.about = tuple.getString("about");
+                    grad.age = tuple.getString("Bdate");
+                    grad.graduationYear = tuple.getString("grad_year");
+                    Experience experience = new Experience(tuple.getString("company"),
+                            tuple.getString("location"), tuple.getString("start_date"),
+                            tuple.getString("end_date"), tuple.getString("position"));
+                    grad.experience.add(experience);
+                    System.out.println("1111111111111111111");
+                    /*
+                     * ResultSet extuple = statement.executeQuery(
+                     * "select * from experience where email = '" + grad.mail + "'");
+                     * while (extuple.next()) {
+                     * Experience experience = new Experience(extuple.getString("company"),
+                     * extuple.getString("location"), extuple.getString("start_date"),
+                     * extuple.getString("end_date"), extuple.getString("position"));
+                     * grad.experience.add(experience);
+                     * 
+                     * }
+                     */
+                    System.out.println("2222222222222222222");
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+                // System.out.println(gradtemp.name);
+                displayedGrads.add(grad);
+
+            }
+
+            connection.close();
+            System.out.println("Database connection closed!");
+        } catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
+        return displayedGrads;
+    }
+   
 
 }

@@ -13,6 +13,12 @@ public class DisplayController {
         }
         return convertGrads(grads);
     }
+    public List<Graduate> graduatecontroller(String email) {
+        Data data = new Data('G');
+        List<Graduate> grad = data.opengraduate(email);
+        
+        return grad;
+    }
 
     private List<DisplayedGrads> convertGrads(List<Graduate> grads) {
         List<DisplayedGrads> displayedgrads = new ArrayList<>();
