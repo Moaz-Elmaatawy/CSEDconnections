@@ -84,6 +84,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -102,28 +104,25 @@ export default {
         this.getCountryDetails();
       }
     },
-    getCountryDetails() {
-      this.$http
-        .get(`alpha/${this.code}`)
-        .then((response) => {
-          if (response.status == 200) {
-            const data = response.data;
-            this.country = data;
-          }
-        })
-        .catch((error) => {
-          console.log(error);
+    getGraduateDetail() {
+      //when the page loads we call the api 
+      //to get graduates data retrieved from database
+      
+      axios.post('http://localhost:8085/get_graduates',{
+          })
+          .then(Response =>  {
+            this.graduates.length=0;
+            for (var i = 0; i < Response.data.length; i++){
+              var obj = Response.data[i]
+              this.graduates.push(obj)
+            }
         });
     },
     goBack() {
       this.$router.push({
         name: "Home",
       });
-    },
-    getBorder(border) {
-      this.code = border;
-      this.getCountryDetails();
-    },
+    }
   },
 };
 </script>

@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 import Home from "../views/Home";
-import CountryDetails from "../views/CountryDetails";
+import GraduateDetails from "../views/GraduateDetails";
 import NotFound from "../views/NotFound";
 
 Vue.use(VueRouter);
@@ -24,7 +24,7 @@ const routes = [
   {
     name: "Details",
     path: "/details/:code",
-    component: CountryDetails,
+    component: GraduateDetails,
     meta: {
       item: null,
       module: {
