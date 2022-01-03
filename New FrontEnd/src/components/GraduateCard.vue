@@ -3,8 +3,8 @@
     <v-img height="200" :src="img"></v-img>
     <v-card-text>
       <div class="card_title">{{ name }}</div>
-      <div><b>Company: </b>{{ company | numberFormatter }}</div>
       <div><b>Email: </b>{{ email }}</div>
+      <div><b>Company: </b>{{ company }}</div>
       <div><b>Location: </b>{{ location }}</div>
     </v-card-text>
   </v-card>
@@ -13,14 +13,15 @@
 <script>
 export default {
   props: {
-    img: { type: String, default: null },
+    img: { type: String, default: "/assets/anonymous-person.jpg" },
     name: { type: String, default: "NA" },
-    company: { type: String, default: "NA" },
     email: { type: String, default: "NA" },
-    location: { type: String, default: "NA" },
+    company: { type: String, default: "NA" },
+    location: { type: String, default: "NA" }
   },
+  
   methods: {
-    
+
     gotoDetails() {
       this.$router.push({
         name: "Details",

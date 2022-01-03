@@ -29,19 +29,20 @@
     </v-row>
     <v-row>
       <v-col v-for="graduate in graduates" :key="graduate.email" md="3">
-        <country-card v-bind="graduate"></country-card>
+        <graduate-card v-bind="graduate"></graduate-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import CountryCard from "../components/CountryCard.vue";
+import GraduateCard from "../components/GraduateCard.vue";
 import axios from 'axios';
+
 export default {
   name: "Home",
   components: {
-    "country-card": CountryCard,
+    "graduate-card": GraduateCard,
   },
   data() {
     return {

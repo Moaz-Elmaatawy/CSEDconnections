@@ -9,11 +9,11 @@
     >
     <v-row>
       <v-col md="6" sm="12" xs="12">
-        <v-img :src="country.flag"></v-img>
+        <v-img :src="graduate.img"></v-img>
       </v-col>
       <v-col md="6" sm="12" xs="12" class="pa-2">
         <div class="mt-8">
-          <h2>{{ country.name }}</h2>
+          <h2>{{ graduate.name }}</h2>
           <v-row class="mt-3">
             <v-col lg="12" md="12" sm="12" xs="12">
               <div
@@ -22,18 +22,20 @@
               >
                 <div>
                   <div>
-                    <b>Native Name: </b
-                    >{{ country.nativeName ? country.nativeName : "NA" }}
+                    <b>Graduation Year: </b
+                    >{{ graduate.graduationYear ? graduate.graduationYear : "NA" }}
                   </div>
                   <div>
-                    <b>Population: </b
-                    >{{ country.population | numberFormatter }}
+                    <b>Company: </b
+                    >{{graduate.company }}
                   </div>
-                  <div><b>Region: </b>{{ country.region }}</div>
-                  <div><b>Sub Region: </b>{{ country.subregion }}</div>
-                  <div><b>Capital: </b>{{ country.capital }}</div>
+                  <div><b>Location: </b>{{ graduate.location }}</div>
+                  <div><b>Position: </b>{{ graduate.position }}</div>
+                  <div><b>Contact: </b>{{ graduate.email }}</div>
+                  <div><b>Phone: </b>{{ graduate.phone }}</div>
+                  <div><b>about: </b>{{ graduate.about }}</div>
                 </div>
-                <div>
+                <!--div>
                   <div>
                     <b>Top Level Domain: </b
                     ><span
@@ -61,11 +63,11 @@
                       >{{ language.name }}
                     </span>
                   </div>
-                </div>
+                </div-->
               </div>
             </v-col>
           </v-row>
-          <div class="mt-2">
+          <!--div class="mt-2">
             Border Countries:
             <span>
               <v-btn
@@ -76,7 +78,7 @@
                 >{{ border }}</v-btn
               >
             </span>
-          </div>
+          </div-->
         </div>
       </v-col>
     </v-row>
@@ -84,46 +86,53 @@
 </template>
 
 <script>
+//import axios from 'axios';
+
 export default {
   data() {
     return {
-      country: {},
-      code: null,
+      graduate: {},
+      graduateEmail: null,
     };
   },
   mounted() {
+    
     this.init();
+  },
+  watch:{
+    updata: function() {
+      this.getGraduateDetail();
+    }
   },
   methods: {
     init() {
       if (this.$route.params.code) {
         let data = atob(this.$route.params.code);
-        this.code = data;
-        this.getCountryDetails();
-      }
+        this.graduateEmail = data;
+        this.getGraduateDetail();
+      }  
     },
-    getCountryDetails() {
-      this.$http
-        .get(`alpha/${this.code}`)
-        .then((response) => {
-          if (response.status == 200) {
-            const data = response.data;
-            this.country = data;
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    getGraduateDetail() {
+      /*
+      axios.get('http://localhost:8085/api/getGraduate',{
+              params: {
+                email:this.graduateEmail
+              }
+            }).then(Response=>{
+                this.graduate= Response.data;
+            });
+            */
+      //if(this.graduate.img == "url"){
+        //this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
+        //console.log(this.graduate.img);
+      //}
+      this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
     },
     goBack() {
       this.$router.push({
         name: "Home",
       });
-    },
-    getBorder(border) {
-      this.code = border;
-      this.getCountryDetails();
-    },
+    }
   },
 };
 </script>
