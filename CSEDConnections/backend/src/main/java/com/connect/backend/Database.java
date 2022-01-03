@@ -111,7 +111,6 @@ public class Database {
 
             
             
-            
             while(tuple.next()){
                 DisplayedGrads gradtemp = new DisplayedGrads();
                 try {
