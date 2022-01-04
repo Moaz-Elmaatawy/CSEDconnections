@@ -271,6 +271,7 @@ export default {
   width: 50%;
   height: 70%;
   padding: 20px 50px 20px 20px;
+  text-align: center;
   
 }
 
@@ -278,7 +279,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 0 0 20px 0;
-  color: #ffffff;
+  color: #5f5f5f;
   font-size: 0.5cm;
 }
 .signupformGraduate .form-group label {
@@ -287,12 +288,12 @@ export default {
 
 .form-group input[type="text"],
 .form-group input[type="password"] {
-  border:  1px inset #ffffff;
+  border:  1px outset #5f5f5f;
   border-radius: 5px;
   background: transparent;
   padding: 0px 5px;
   font-size: 1em;
-  color: #ffffff;
+  color: #5f5f5f;
 }
 .button {
   background-color: #3c3fcf; 
@@ -346,9 +347,20 @@ export default {
   font-size: 0.7cm;
   color: rgb(8, 184, 23);
 }
-
-#describe {
-  color: #ffffff;
+a:link, a:visited {
+  background-color: #5f5f5f; 
+  color: black;
+  border: 2px solid #5f5f5f; 
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
+
+a:hover, a:active {
+  background-color: rgb(156, 156, 156);
+  color: white;
+}
+
 
 </style>

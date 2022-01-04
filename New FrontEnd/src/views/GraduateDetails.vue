@@ -114,19 +114,9 @@ export default {
               email:this.graduateEmail
             }
         }).then(Response=>{
-            //console.log("ddddddddddd");
-            //console.log(Response.data);
             this.graduate= Response.data;
             this.experience=this.graduate.experience;
-            //console.log(this.graduate.img);
         });
-
-      //console.log(this.graduate.graduationYear);
-      //if(this.graduate.img == "url"){
-      //this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
-      //console.log(this.graduate.img);
-      //}
-      //this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
     },
     goBack() {
       this.$router.push({

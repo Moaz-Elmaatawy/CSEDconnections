@@ -24,10 +24,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class Display {
 
     
-    @PostMapping("/get_graduates")
-    public String showgraduates(@RequestBody String contact) {
+    @GetMapping("/get_graduates")
+    public String showgraduates(@RequestParam(value = "Search") String search) {
         DisplayController controller = new DisplayController();
-        List<DisplayedGrads> grads = controller.Display(null);
+        List<DisplayedGrads> grads = controller.Display(search);
 
         // System.out.println(tuple.getString("email"));
         Gson gson = new Gson();
