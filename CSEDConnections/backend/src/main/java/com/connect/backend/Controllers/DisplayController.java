@@ -8,8 +8,8 @@ public class DisplayController {
         Data data = new Data('G');
         List<Graduate> grads = data.startdisplay();
         if (search != null && search.isBlank()) {
-            // Search sh = new Search();
-            // grads = sh.search(grads, search);
+            Search sh = new Search();
+            grads = sh.search(grads, search);
         }
         return convertGrads(grads);
     }
