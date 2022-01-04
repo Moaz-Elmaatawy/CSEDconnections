@@ -22,11 +22,10 @@ public class DisplayController {
         }
         return convertGrads(grads);
     }
-    public List<Graduate> graduatecontroller(String email) {
+
+    public Graduate selectGraduate(String email) {
         Data data = new Data('G');
-        List<Graduate> grad = data.opengraduate(email);
-        
-        return grad;
+        return data.opengraduate(email);
     }
 
     private List<DisplayedGrads> convertGrads(List<Graduate> grads) {
@@ -36,30 +35,4 @@ public class DisplayController {
         }
         return displayedgrads;
     }
-    Graduate ReqGraduate ;
-    @CrossOrigin("*")
-    @GetMapping("/opengraduate")
-    public String opengraduate(@RequestParam(value = "email") String email ) {
-        DisplayController controller = new DisplayController();
-        List<Graduate> graduate = controller.graduatecontroller(email) ;
-        ReqGraduate = graduate.get(0) ;
-       return "done" ;
-    }
-
-    @CrossOrigin("*")
-    @PostMapping("/get_graduate_details")
-    public String GetGraduateDetails(@RequestBody String info) {
-        
-
-        // System.out.println(tuple.getString("email"));
-        Gson gson = new Gson();
-        // Type listType = new TypeToken<List<DisplayedGrads>>() {
-        // }.getType();
-        java.lang.reflect.Type type = new TypeToken<Graduate>() {
-        }.getType();
-        String json = gson.toJson(ReqGraduate, type);
-        return json;
-
-    }
-
 }

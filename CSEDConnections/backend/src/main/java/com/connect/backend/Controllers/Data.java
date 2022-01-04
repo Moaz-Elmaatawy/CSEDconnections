@@ -31,8 +31,9 @@ public class Data {
     public List<Graduate> startdisplay() {
         return database.getGraduates();
     }
-    public List<Graduate> opengraduate(String email){
+
+    public Graduate opengraduate(String email) {
         System.out.println(email);
-        return database.opengraduateDB(email) ;
+        return database.opengraduateDB(email);
     }
 }

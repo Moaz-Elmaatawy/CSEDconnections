@@ -1,5 +1,6 @@
 package com.connect.backend;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.List;
 
 import com.connect.backend.Controllers.DisplayController;
 import com.connect.backend.Controllers.DisplayedGrads;
+import com.connect.backend.Controllers.Graduate;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +25,19 @@ public class DisplayTest {
             }
         }
         return true;
+    }
+
+    @Test
+    void selectGraduate() {
+        DisplayController controller = new DisplayController();
+        Graduate actual = controller.selectGraduate("Ahmed@gmail.com");
+        assertEquals("Ahmed Samir", actual.name);
+        assertEquals("01270627231", actual.phone);
+        assertEquals("Ahmed@gmail.com", actual.mail);
+        assertEquals("202301-01", actual.graduationYear);
+        assertEquals("23", actual.age);
+        assertEquals("Meta", actual.experience.get(0).companyName);
+        assertEquals("London", actual.experience.get(0).location);
     }
 
     @Test
