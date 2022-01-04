@@ -38,6 +38,7 @@ public class Display {
 
     }
     Graduate ReqGraduate ;
+    @CrossOrigin("*")
     @GetMapping("/opengraduate")
     public String opengraduate(@RequestParam(value = "email") String email ) {
         DisplayController controller = new DisplayController();
@@ -58,6 +59,7 @@ public class Display {
         java.lang.reflect.Type type = new TypeToken<Graduate>() {
         }.getType();
         String json = gson.toJson(ReqGraduate, type);
+       // System.out.println(json);
         return json;
 
     }

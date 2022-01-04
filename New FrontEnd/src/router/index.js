@@ -4,10 +4,17 @@ import VueRouter from "vue-router";
 import Home from "../views/Home";
 import GraduateDetails from "../views/GraduateDetails";
 import NotFound from "../views/NotFound";
+import GraduateProfile from "../components/GraduateProfile";
+
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: '/GraduateProfile',
+    name: 'GraduateProfile',
+    component: GraduateProfile
+  },
   //Login
   {
     name: "Home",
