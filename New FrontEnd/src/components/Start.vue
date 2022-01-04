@@ -17,9 +17,9 @@
         <span id="describe">
         to conncet Computer and Systems Engineering Department 
         </span>
-        <span id="describe">StudentsAndGraduates
+        <span id="describe">Students And Graduates
         </span>
-        <br><br><br><br>
+        <br><br><br>
         <button class="button00" @click="registerAsStudent()">Register As a Student</button>
         <button class="button00" @click="registerAsGraduate()">Register As a Graduate</button>
         <br>
