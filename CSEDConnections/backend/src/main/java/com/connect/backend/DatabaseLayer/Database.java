@@ -16,7 +16,7 @@ import com.connect.backend.Controllers.Student;
 public class Database {
     private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
     private String username = "root";
-    private String password = "A1072000a";
+    private String password = "arduino-010";
     private String tableName;
 
     public Database() {

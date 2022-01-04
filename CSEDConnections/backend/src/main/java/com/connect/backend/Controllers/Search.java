@@ -18,16 +18,22 @@ public class Search {
     }
     boolean match(Graduate grad ,String s){
         String keyWords []=s.split(" ");
-
+        
         // search in the "about" field
         for(String word : keyWords){
-            if(grad.about.matches("(.*)"+word+"(.*)"));
+            if(grad.about.matches("(.*)"+word+"(.*)"))
+                return true;
+        } 
+        
+        // search in the "name" field
+        for(String word : keyWords){
+            if(grad.name.matches("(.*)"+word+"(.*)"))
                 return true;
         } 
 
         // search in the "graduationYear" field
         for(String word : keyWords){
-            if(grad.graduationYear.matches("(.*)"+word+"(.*)"));
+            if(grad.graduationYear.matches("(.*)"+word+"(.*)"))
                 return true;
         }
         
