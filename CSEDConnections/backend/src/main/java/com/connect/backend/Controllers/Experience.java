@@ -1,11 +1,11 @@
-package com.connect.backend;
+package com.connect.backend.Controllers;
 
 public class Experience {
-    String companyName;
-    String location;
-    String startDate, endDate;
-    boolean current;
-    String position;
+    public String companyName;
+    public String location;
+    public String startDate, endDate;
+    public boolean current;
+    public String position;
 
     public Experience(String companyName, String location, String startDate, String endDate, String position) {
         this.companyName = companyName;

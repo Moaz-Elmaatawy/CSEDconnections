@@ -44,8 +44,8 @@ DROP TABLE IF EXISTS `graduate`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `graduate` (
-  `email` varchar(45) NOT NULL,
-  `name` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
   `Bdate` varchar(45) DEFAULT NULL,
   `gender` varchar(6) DEFAULT NULL,
   `phone` varchar(14) DEFAULT NULL,
@@ -61,8 +61,8 @@ DROP TABLE IF EXISTS `student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student` (
-  `email` varchar(45) NOT NULL,
-  `name` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
   `Bdate` varchar(45) DEFAULT NULL,
   `gender` varchar(6) DEFAULT NULL,
   `phone` varchar(14) DEFAULT NULL,

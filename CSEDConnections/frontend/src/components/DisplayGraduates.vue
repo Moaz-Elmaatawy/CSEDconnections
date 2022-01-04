@@ -60,14 +60,13 @@ export default {
 }
 #img{
     object-fit: cover;
-      object-fit: fill;
+    object-fit: fill;
     cursor: pointer;
-    height: 250px;
-    width: 450px;
+    height: 275px;
+    width: 250px;
    
 }
 #categorycontainer{
- 
     border: 1.7px;
     border-style: solid;
 }
@@ -80,16 +79,16 @@ export default {
    
 }
 #container{
-    background-color: darkkhaki;
+   
 }
 #a2{
     font-size: 30px; 
-    color:rgb(37, 115, 192);
+    color:rgb(0, 82, 163);
     cursor: pointer;   
 }
 #a1{
     font-size: 22px; 
-    color: rgb(227, 236, 248) ;
+    color: rgba(227, 236, 248, 0.404) ;
       
 }
 #h1{
@@ -107,7 +106,7 @@ export default {
 .input{
     width: 35%;
     height: 25px;
-    border:2px solid cornflowerblue;
+    border:2px solid rgb(50, 73, 117);
     border-radius: 6px;
 
 }
