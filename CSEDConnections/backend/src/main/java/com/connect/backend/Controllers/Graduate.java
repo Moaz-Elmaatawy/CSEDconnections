@@ -22,7 +22,6 @@ public class Graduate extends Person {
         this.img = img;
         this.graduationYear = graduationYear;
         experience = new ArrayList<>();
-
     }
 
     public String getGraduationYear() {

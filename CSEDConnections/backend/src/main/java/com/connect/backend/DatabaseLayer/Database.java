@@ -16,7 +16,7 @@ import com.connect.backend.Controllers.Student;
 public class Database {
     private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
     private String username = "root";
-    private String password = "A1072000a";
+    private String password = "root";
     private String tableName;
 
     public Database() {
@@ -190,6 +190,7 @@ public class Database {
         }
         return displayedGrads;
     }
+
     public List<Graduate> opengraduateDB(String email) {
         List<Graduate> displayedGrads = new ArrayList<>();
 
@@ -204,8 +205,7 @@ public class Database {
                     "select * " +
                             "from graduate JOIN experience " +
                             "on experience.email=graduate.email" +
-                            " where graduate.email='" + email +"'"
-                            );
+                            " where graduate.email='" + email + "'");
 
             while (tuple.next()) {
                 System.out.println("33333333333333");
@@ -253,6 +253,5 @@ public class Database {
         }
         return displayedGrads;
     }
-   
 
 }
