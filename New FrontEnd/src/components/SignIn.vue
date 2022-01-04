@@ -157,7 +157,8 @@ export default {
                 const Data = Response.data;
                 if(Data === "Successfully Logged In"){
                   this.check = Data ;
-                  setTimeout(this.account, 2000);
+                  this.$router.push('/Home'); 
+                  //setTimeout(this.account, 2000);
                 }else {
                   this.check=Data;
                 }

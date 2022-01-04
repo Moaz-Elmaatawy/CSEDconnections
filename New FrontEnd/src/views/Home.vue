@@ -14,17 +14,7 @@
       ></v-col>
       <v-spacer class="d-none d-md-flex d-lg-flex"></v-spacer>
       <v-col>
-        <v-select
-          v-model="Company"
-          @change="CompanyChange"
-          label="Filter by Company"
-          :items="Companies"
-          item-text="name"
-          item-value="code"
-          solo
-          clearable
-        >
-        </v-select>
+       
       </v-col>
     </v-row>
     <v-row>
