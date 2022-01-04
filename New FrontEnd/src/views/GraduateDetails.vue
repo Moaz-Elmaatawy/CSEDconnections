@@ -18,8 +18,7 @@
             <v-col lg="12" md="12" sm="12" xs="12">
               <div
                 :class="`d-flex justify-space-between flex-wrap `"
-                style="height: 100%"
-              >
+                style="height: 100%">
                 <div>
                   <div>
                     <b>Graduation Year: </b
@@ -27,11 +26,11 @@
                   </div>
                   <div>
                     <b>Company: </b
-                    >{{graduate.company }}
+                    >{{experience[0].companyName }}
                   </div>
-                  <div><b>Location: </b>{{ graduate.location }}</div>
-                  <div><b>Position: </b>{{ graduate.position }}</div>
-                  <div><b>Contact: </b>{{ graduate.email }}</div>
+                  <div><b>Location: </b>{{ experience[0].location }}</div>
+                  <div><b>Position: </b>{{ experience[0].position }}</div>
+                  <div><b>Contact: </b>{{ graduate.mail }}</div>
                   <div><b>Phone: </b>{{ graduate.phone }}</div>
                   <div><b>about: </b>{{ graduate.about }}</div>
                 </div>
@@ -86,24 +85,21 @@
 </template>
 
 <script>
-//import axios from 'axios';
+import axios from 'axios';
 
 export default {
   data() {
     return {
       graduate: {},
-      graduateEmail: null,
+      graduateEmail: "",
+      experience: [],
     };
   },
   mounted() {
     
     this.init();
   },
-  watch:{
-    updata: function() {
-      this.getGraduateDetail();
-    }
-  },
+
   methods: {
     init() {
       if (this.$route.params.code) {
@@ -113,20 +109,14 @@ export default {
       }  
     },
     getGraduateDetail() {
-      /*
-      axios.get('http://localhost:8085/api/getGraduate',{
-              params: {
-                email:this.graduateEmail
-              }
-            }).then(Response=>{
-                this.graduate= Response.data;
-            });
-            */
-      //if(this.graduate.img == "url"){
-        //this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
-        //console.log(this.graduate.img);
-      //}
-      this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
+      axios.get('http://localhost:8085/getGraduate',{
+            params: {
+              email:this.graduateEmail
+            }
+        }).then(Response=>{
+            this.graduate= Response.data;
+            this.experience=this.graduate.experience;
+        });
     },
     goBack() {
       this.$router.push({

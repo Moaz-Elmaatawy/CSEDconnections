@@ -15,10 +15,10 @@
       <v-spacer class="d-none d-md-flex d-lg-flex"></v-spacer>
       <v-col>
         <v-select
-          v-model="region"
-          @change="regionChange"
-          label="Filter by region"
-          :items="regions"
+          v-model="Company"
+          @change="CompanyChange"
+          label="Filter by Company"
+          :items="Companies"
           item-text="name"
           item-value="code"
           solo
@@ -48,9 +48,9 @@ export default {
     return {
       graduates:[],
       name: '',
-      search: null,
-      region: null,
-      regions: ["Africa", "Americas", "Asia", "Europe", "Oceania"],
+      search: "",
+      company: null,
+      Companies: ["company_1", "company_2", "company_3", "company_4", "company_5"],
       
     };
   },
@@ -64,32 +64,35 @@ export default {
       immediate: true,
       handler(val) {
         if (val) {
-          this.region = null;
-          this.getGraduates();
+          this.Company = null; 
         }
+        this.getGraduates();
       },
     },
     
   },
   methods: {
   
-    regionChange() {
-      this.search = null;
+    CompanyChange() {
+      this.search = "";
       this.getGraduates();
     },
     clearSearch() {
       setTimeout(() => {
-        this.search = null;
+        this.search = "";
         this.getGraduates();
-      }, 100);
+      }, 10);
     },
     
     getGraduates() {
       //when the page loads we call the api 
       //to get graduates data retrieved from database
       
-      axios.post('http://localhost:8085/get_graduates',{
-          })
+      axios.get('http://localhost:8085/get_graduates',{
+            params: {
+              Search:this.search
+            }
+        })
           .then(Response =>  {
             this.graduates.length=0;
             for (var i = 0; i < Response.data.length; i++){
