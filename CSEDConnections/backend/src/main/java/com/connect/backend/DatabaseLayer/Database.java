@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.connect.backend.Controllers.DisplayedGrads;
 import com.connect.backend.Controllers.Experience;
 import com.connect.backend.Controllers.Graduate;
 import com.connect.backend.Controllers.Student;
@@ -117,6 +118,7 @@ public class Database {
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
 
+            Statement statement = connection.createStatement();
 
             System.out.println("inserted successfully ");
             connection.close();

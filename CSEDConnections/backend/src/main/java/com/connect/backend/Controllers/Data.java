@@ -6,7 +6,7 @@ import com.connect.backend.DatabaseLayer.Database;
 
 public class Data {
     private Database database;
-    //private char type;
+    private char type;
 
     public Data(char t) {
         database = new Database(t);
