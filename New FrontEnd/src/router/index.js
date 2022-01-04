@@ -10,13 +10,8 @@ import SignUpStudent from '@/components/SignUpStudent'
 import Start from '@/components/Start'
 
 Vue.use(VueRouter);
-
-const routes = [
-  {
-    path: '/GraduateProfile',
-    name: 'GraduateProfile',
-    component: GraduateProfile
-  },
+export default new VueRouter({
+routes : [
   //Login
   {
     name: "Home",
@@ -56,10 +51,17 @@ const routes = [
     },
   },
   {
-    path: '/SignIn',
-    name: 'SignIn',
-    component: SignIn
+    name: "SignIn",
+    path: "/SignIn",
+    component: SignIn,
+    meta: {
+      item: null,
+      module: {
+        id: null,
+      },
+      title: "SignIn",
   },
+},
   {
     path: '/SignUpGraduate',
     name: 'SignUpGraduate',
@@ -76,12 +78,8 @@ const routes = [
     component: Start 
   },
 
-];
+]
+})
 
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes,
-});
 
-export default router;
+
