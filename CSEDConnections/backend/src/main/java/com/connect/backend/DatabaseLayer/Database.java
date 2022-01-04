@@ -14,9 +14,9 @@ import com.connect.backend.Controllers.Graduate;
 import com.connect.backend.Controllers.Student;
 
 public class Database {
-    private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
+    private String url = "jdbc:mysql://127.0.0.1:3300/csedconnections";
     private String username = "root";
-    private String password = "root";
+    private String password = "";
     private String tableName;
 
     public Database() {

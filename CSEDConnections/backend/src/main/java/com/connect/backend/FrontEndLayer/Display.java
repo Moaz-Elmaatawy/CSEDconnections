@@ -39,10 +39,10 @@ public class Display {
 
     }
 
-    @CrossOrigin("*")
-    @GetMapping("/opengraduate")
-    public String opengraduate(@RequestParam(value = "email") String email) {
-        // System.out.println("sssssssssssssssssssssss " + email );
+    Graduate ReqGraduate ;
+    @GetMapping("/getGraduate")
+    public String opengraduate(@RequestParam(value = "email") String email ) {
+        //System.out.println("sssssssssssssssssssssss " + email );
         DisplayController controller = new DisplayController();
         Graduate ReqGraduate = controller.selectGraduate(email);
 

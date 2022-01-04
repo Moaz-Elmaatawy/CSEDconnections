@@ -206,6 +206,7 @@ export default {
       if(this.msg1 == true && this.msg4 == true) {
       axios.get('http://localhost:8085/signUp/student',{
           params: {
+            
               name:this.name, age:this.age,
               gender:this.gender, phone:this.phone, profilePicture:this.profilePicture,
               about:this.about, expectedgraduationyear:this.expectedgraduationyear,
