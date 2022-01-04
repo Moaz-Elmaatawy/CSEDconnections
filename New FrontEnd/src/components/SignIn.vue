@@ -148,14 +148,14 @@ export default {
     },
     signIn(){
       if(this.msg4 == true ) {
-            axios.get('http://localhost:8085/api/signinGrad',{
+            axios.get('http://localhost:8085/signinGrad',{
                 params: {
                     email:this.email,
                     pass1word:this.pass1word
                 }
             }).then(Response=>{
                 const Data = Response.data;
-                if(Data == "Successfully Logged In"){
+                if(Data === "Successfully Logged In"){
                   this.check = Data ;
                   setTimeout(this.account, 2000);
                 }else {

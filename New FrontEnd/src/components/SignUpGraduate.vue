@@ -210,7 +210,7 @@ export default {
     },
     signUpAsGraduate() {
       if(this.msg1 == true && this.msg4 == true) {
-        axios.get('http://localhost:8085/api/signUp/graduate',{
+        axios.get('http://localhost:8085/signUp/graduate',{
           params: {
               name:this.name, age:this.age,
               gender:this.gender, phone:this.phone, profilePicture:this.profilePicture,

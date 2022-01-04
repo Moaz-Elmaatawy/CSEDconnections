@@ -1,5 +1,5 @@
 <template>
-  <v-card @click="gotoDetails">
+  <v-card @click="gotoDetails()">
     <v-img height="200" :src="img"></v-img>
     <v-card-text>
       <div class="card_title">{{ name }}</div>
@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   props: {
     img: { type: String, default: "/assets/anonymous-person.jpg" },
@@ -23,10 +25,18 @@ export default {
   methods: {
 
     gotoDetails() {
-      this.$router.push({
-        name: "Details",
-        params: { code: btoa(this.email) },
-      });
+      axios.get('http://localhost:8085/opengraduate',{
+                params: {
+                    email:this.email    
+                }
+            }).then(Response=>{
+                const Data = Response.data;
+                if(Data == "done"){
+                   this.$router.push('/GraduateProfile');
+                }
+            });
+   
+       
     },
     
   },
