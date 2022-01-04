@@ -4,6 +4,10 @@ import VueRouter from "vue-router";
 import Home from "../views/Home";
 import GraduateDetails from "../views/GraduateDetails";
 import NotFound from "../views/NotFound";
+import SignIn from '@/components/SignIn'
+import SignUpGraduate from '@/components/SignUpGraduate'
+import SignUpStudent from '@/components/SignUpStudent'
+import Start from '@/components/Start'
 
 Vue.use(VueRouter);
 
@@ -11,7 +15,7 @@ const routes = [
   //Login
   {
     name: "Home",
-    path: "/",
+    path: "/Home",
     component: Home,
     meta: {
       item: null,
@@ -23,7 +27,7 @@ const routes = [
   },
   {
     name: "Details",
-    path: "/details/:code",
+    path: "/details",
     component: GraduateDetails,
     meta: {
       item: null,
@@ -46,6 +50,27 @@ const routes = [
       title: "Not FOund",
     },
   },
+  {
+    path: '/SignIn',
+    name: 'SignIn',
+    component: SignIn
+  },
+  {
+    path: '/SignUpGraduate',
+    name: 'SignUpGraduate',
+    component: SignUpGraduate
+  },
+  {
+    path: '/SignUpStudent',
+    name: 'SignUpStudent',
+    component: SignUpStudent 
+  },
+  {
+    path: '/',
+    name: 'Start',
+    component: Start 
+  },
+
 ];
 
 const router = new VueRouter({

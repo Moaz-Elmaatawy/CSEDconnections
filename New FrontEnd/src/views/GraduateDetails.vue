@@ -18,8 +18,7 @@
             <v-col lg="12" md="12" sm="12" xs="12">
               <div
                 :class="`d-flex justify-space-between flex-wrap `"
-                style="height: 100%"
-              >
+                style="height: 100%">
                 <div>
                   <div>
                     <b>Graduation Year: </b
@@ -27,10 +26,10 @@
                   </div>
                   <div>
                     <b>Company: </b
-                    >{{graduate.company }}
+                    >{{experience[0].companyName }}
                   </div>
-                  <div><b>Location: </b>{{ graduate.location }}</div>
-                  <div><b>Position: </b>{{ graduate.position }}</div>
+                  <div><b>Location: </b>{{ experience[0].location }}</div>
+                  <div><b>Position: </b>{{ experience[0].position }}</div>
                   <div><b>Contact: </b>{{ graduate.mail }}</div>
                   <div><b>Phone: </b>{{ graduate.phone }}</div>
                   <div><b>about: </b>{{ graduate.about }}</div>
@@ -93,6 +92,7 @@ export default {
     return {
       graduate: {},
       graduateEmail: "",
+      experience: [],
     };
   },
   mounted() {
@@ -114,17 +114,19 @@ export default {
               email:this.graduateEmail
             }
         }).then(Response=>{
-            console.log("ddddddddddd");
-            console.log(Response.data);
+            //console.log("ddddddddddd");
+            //console.log(Response.data);
             this.graduate= Response.data;
+            this.experience=this.graduate.experience;
+            //console.log(this.graduate.img);
         });
 
-      console.log(this.graduate.graduationYear);
+      //console.log(this.graduate.graduationYear);
       //if(this.graduate.img == "url"){
       //this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
       //console.log(this.graduate.img);
       //}
-      this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
+      //this.graduate.img="https://images.assetsdelivery.com/compings_v2/salamatik/salamatik1801/salamatik180100019.jpg";
     },
     goBack() {
       this.$router.push({

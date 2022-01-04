@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin("*")
 @RestController
+
 public class Display {
 
-    @CrossOrigin("*")
+    
     @PostMapping("/get_graduates")
     public String showgraduates(@RequestBody String contact) {
         DisplayController controller = new DisplayController();
@@ -41,16 +43,15 @@ public class Display {
     Graduate ReqGraduate ;
     @GetMapping("/getGraduate")
     public String opengraduate(@RequestParam(value = "email") String email ) {
-        System.out.println("sssssssssssssssssssssss " + email );
+        //System.out.println("sssssssssssssssssssssss " + email );
         DisplayController controller = new DisplayController();
         List<Graduate> graduate = controller.graduatecontroller(email) ;
         ReqGraduate = graduate.get(0) ;
 
         Gson gson = new Gson();
-        java.lang.reflect.Type type = new TypeToken<Graduate>() {
-        }.getType();
+        java.lang.reflect.Type type = new TypeToken<Graduate>() {}.getType();
         String json = gson.toJson(ReqGraduate, type);
-        System.out.println(json);
-        return "dddddd";
+        //System.out.println(json);
+        return json;
     }    
 }
