@@ -34,7 +34,7 @@ public class DisplayTest {
         assertEquals("Ahmed Samir", actual.name);
         assertEquals("01270627231", actual.phone);
         assertEquals("Ahmed@gmail.com", actual.mail);
-        assertEquals("202301-01", actual.graduationYear);
+        assertEquals("2023-01-01", actual.graduationYear);
         assertEquals("23", actual.age);
         assertEquals("Meta", actual.experience.get(0).companyName);
         assertEquals("London", actual.experience.get(0).location);
