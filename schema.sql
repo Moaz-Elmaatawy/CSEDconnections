@@ -90,11 +90,7 @@ CREATE TABLE IF NOT EXISTS `csedconnections`.`posts` (
     REFERENCES `csedconnections`.`graduate` (`email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `posts_ibfk_2`
-    FOREIGN KEY (`email`)
-    REFERENCES `csedconnections`.`student` (`email`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+ 
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
