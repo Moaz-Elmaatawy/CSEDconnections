@@ -28,7 +28,7 @@ public class posts {
         
         PostController postController = new PostController() ;
         postController.post(new Sign().getuser(),post);
-   
+        
     }
     
     
