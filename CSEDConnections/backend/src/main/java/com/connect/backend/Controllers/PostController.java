@@ -5,14 +5,14 @@ import java.util.List;
 import com.connect.backend.DatabaseLayer.Database;
 
 public class PostController {
-    public void post(String email,String post){
+    public void createPost(String email, String name, String post){
         Database db = new Database();
-        db.postdb(email,post);
+        db.createPost(email,name,post);
     }
 
     public List<post> getPosts(){
         Database db = new Database();
-        db.postdb(email,post);
+        return db.getPosts();
     }
 
 }

@@ -1,7 +1,7 @@
 package com.connect.backend.Controllers;
 
 public class post {
-    String name;
-    String email;
-    String post;
+    public String name;
+    public String email;
+    public String post;
 }

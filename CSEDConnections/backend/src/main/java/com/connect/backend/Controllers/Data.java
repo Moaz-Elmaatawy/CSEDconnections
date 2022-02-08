@@ -36,4 +36,14 @@ public class Data {
         System.out.println(email);
         return database.opengraduateDB(email);
     }
+
+    public void createPost(String email, String name, String post){
+        Database db = new Database();
+        db.createPost(email,name,post);
+    }
+
+    public List<post> getPosts(){
+        Database db = new Database();
+        return db.getPosts();
+    }
 }
