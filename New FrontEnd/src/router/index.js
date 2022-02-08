@@ -7,6 +7,9 @@ import NotFound from "../views/NotFound";
 import SignIn from '@/components/SignIn'
 import SignUpGraduate from '@/components/SignUpGraduate'
 import SignUpStudent from '@/components/SignUpStudent'
+import Announcements from '../views/Announcements'
+
+//import CreatePost from '@/components/CreatePost'
 import Start from '@/components/Start'
 
 Vue.use(VueRouter);
@@ -77,7 +80,16 @@ routes : [
     name: 'Start',
     component: Start 
   },
-
+  {
+    path: '/Announcements',
+    name: "Announcements",
+    component: Announcements 
+  },/*
+  {
+  path: '/CreatePost',
+  name: "CreatePost",
+  component: CreatePost 
+  },*/
 ]
 })
 

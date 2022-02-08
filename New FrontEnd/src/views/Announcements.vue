@@ -1,8 +1,9 @@
 <template>
-
   <v-container>
       <v-col>
-        <v-btn large outlined rounded> Home </v-btn> <v-btn  @click="goToAnnoucement" large outlined rounded> Announcements </v-btn> <br><br>
+        <v-div>
+        <v-btn large outlined rounded  @click="goToHome"> Home </v-btn> <v-btn large outlined rounded> Announcements </v-btn> <v-btn click="goToCreatePost" class="createbtn" large outlined  > Create Post </v-btn> <br><br>
+        </v-div>
         <v-text-field
           label="Search"
           v-model="search"
@@ -12,40 +13,39 @@
           @click:clear="clearSearch"
         >
         </v-text-field
-      ></v-col>
+      >
+
+    </v-col>
       <v-spacer class="d-none d-md-flex d-lg-flex"></v-spacer>
-      <v-col>
-       
+      <v-col> 
       </v-col>
     <v-row>
-      <v-col v-for="graduate in graduates" :key="graduate.email" md="3">
-        <graduate-card v-bind="graduate"></graduate-card>
+      <v-col v-for="post in posts" :key="post.email" md="6">
+        <post-card v-bind="post"></post-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import GraduateCard from "../components/GraduateCard.vue";
+import PostCard from "../components/PostCard.vue";
 import axios from 'axios';
 
 export default {
   name: "Home",
   components: {
-    "graduate-card": GraduateCard,
+    "post-card": PostCard,
   },
   data() {
     return {
-      graduates:[],
+      posts:[],
       name: '',
       search: "",
-      company: null,
-      Companies: ["company_1", "company_2", "company_3", "company_4", "company_5"],
       
     };
   },
   mounted() {
-    this.getGraduates();
+    this.getPosts();
   },
 
   watch: {
@@ -56,7 +56,7 @@ export default {
         if (val) {
           this.Company = null; 
         }
-        this.getGraduates();
+        this.getPosts();
       },
     },
     
@@ -65,25 +65,27 @@ export default {
   
     CompanyChange() {
       this.search = "";
-      this.getGraduates();
+      this.getPosts();
     },
-
     clearSearch() {
       setTimeout(() => {
         this.search = "";
-        this.getGraduates();
+        this.getPosts();
       }, 10);
     },
-
-    goToAnnoucement() {
+    goToHome() {
       this.$router.push({
-        name: "Announcements",
+        name: "Home",
+      });
+    },    
+    goToCreatePost() {
+      this.$router.push({
+        name: "CreatePost",
       });
     },
-    
-    getGraduates() {
+    getPosts() {
       //when the page loads we call the api 
-      //to get graduates data retrieved from database
+      //to get posts data retrieved from database
       
       axios.get('http://localhost:8085/get_graduates',{
             params: {
@@ -91,13 +93,18 @@ export default {
             }
         })
           .then(Response =>  {
-            this.graduates.length=0;
+            this.posts.length=0;
             for (var i = 0; i < Response.data.length; i++){
               var obj = Response.data[i]
-              this.graduates.push(obj)
+              this.posts.push(obj)
             }
         });
     },
   },
 };
 </script>
+<style>
+.createbtn {
+    margin-left:715px;
+    }
+</style>
