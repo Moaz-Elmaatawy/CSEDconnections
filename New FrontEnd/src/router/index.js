@@ -12,6 +12,7 @@ import Announcements from '../views/Announcements'
 //import CreatePost from '@/components/CreatePost'
 import Start from '@/components/Start'
 
+import PostAnouncement from '@/components/PostAnouncement'
 Vue.use(VueRouter);
 export default new VueRouter({
 routes : [
@@ -74,6 +75,11 @@ routes : [
     path: '/SignUpStudent',
     name: 'SignUpStudent',
     component: SignUpStudent 
+  },
+  {
+    path: '/PostAnouncement',
+    name: 'PostAnouncement',
+    component: PostAnouncement 
   },
   {
     path: '/',

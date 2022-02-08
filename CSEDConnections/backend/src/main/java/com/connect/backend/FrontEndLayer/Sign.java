@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 //@RequestMapping("api")
 @RestController
 public class Sign {
-
+    public static String LoggedEmail = null ; 
+    public String getuser(){
+        return LoggedEmail ;
+    }
     /*
      * @PostMapping("/signup")
      * public String signup(@RequestBody String info) {
@@ -76,7 +79,7 @@ public class Sign {
     @GetMapping("/signinGrad")
     public String signInGrad(@RequestParam(value = "email") String email,
             @RequestParam(value = "pass1word") String password) {
-
+        LoggedEmail = email; 
         SignController controller = new SignController('G');
         if (controller.signIn(email, password)) {
             return "Successfully Logged In";

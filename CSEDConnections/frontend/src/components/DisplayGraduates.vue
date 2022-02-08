@@ -38,6 +38,7 @@ export default {
       //when the page loads we call the api 
       //to get graduates data retrieved from database
       
+<<<<<<< Updated upstream
         axios.post('http://localhost:8085/get_graduates',{
               
             })
@@ -49,6 +50,20 @@ export default {
             
             
           });
+=======
+        axios.post("http://localhost:8085/get_graduates")
+        .then(response =>{ 
+          
+         if(response.data.length>0){
+           /*
+              for (var i = 0; i < response.data.length; i++){
+                  var obj = response.data[i]
+                  this.graduates.push(obj)
+                } 
+             */   
+         }
+        });  
+>>>>>>> Stashed changes
   }
 }
 </script>
@@ -78,9 +93,13 @@ export default {
     grid-template-columns: 1fr 1fr 1fr;
    
 }
+<<<<<<< Updated upstream
 #container{
    
 }
+=======
+
+>>>>>>> Stashed changes
 #a2{
     font-size: 30px; 
     color:rgb(0, 82, 163);
