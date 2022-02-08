@@ -4,51 +4,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Search {
-    List<Graduate> search(List<Graduate> g ,String s){
+    List<post> searchPosts(List<post> p ,String s){
+
+        List<post> result=  new ArrayList<>();
+
+        for(int i=0;i<p.size();++i){
+            if(match(p.get(i).toString(),s)){
+                result.add(p.get(i));
+            }
+
+        }
+        return result;
+    }
+    List<Graduate> searchGraduates(List<Graduate> g ,String s){
 
         List<Graduate> result=  new ArrayList<>();
 
         for(int i=0;i<g.size();++i){
-            if(match(g.get(i),s)){
+            if(match(g.get(i).toString(),s) ){
                 result.add(g.get(i));
             }
 
         }
         return result;
     }
-    boolean match(Graduate grad ,String s){
+
+    boolean match(String text ,String s){
+        
         String keyWords []=s.split(" ");
         
-        // search in the "about" field
+        // search in the text for s
         for(String word : keyWords){
-            if(grad.about.matches("(.*)"+word+"(.*)"))
+            if(text.matches("(.*)"+word+"(.*)"))
                 return true;
         } 
         
-        // search in the "name" field
-        for(String word : keyWords){
-            if(grad.name.matches("(.*)"+word+"(.*)"))
-                return true;
-        } 
-
-        // search in the "graduationYear" field
-        for(String word : keyWords){
-            if(grad.graduationYear.matches("(.*)"+word+"(.*)"))
-                return true;
-        }
-        
-        // search in the "Experience" field
-        for(String word : keyWords){
-            for(int i=0;i<grad.experience.size();++i){
-                if(grad.experience.get(i).companyName.matches("(.*)"+word+"(.*)"))
-                    return true;
-                if(grad.experience.get(i).location.matches("(.*)"+word+"(.*)"))
-                    return true;
-                if(grad.experience.get(i).position.matches("(.*)"+word+"(.*)"))
-                    return true;
-            }
-        } 
-
         return false;
     }
 }

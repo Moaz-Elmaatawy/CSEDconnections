@@ -9,7 +9,7 @@ public class DisplayController {
         List<Graduate> grads = data.startdisplay();
         if (search != null && !search.isBlank()) {
             Search sh = new Search();
-            grads = sh.search(grads, search);
+            grads = sh.searchGraduates(grads, search);
         }
         return convertGrads(grads);
     }

@@ -10,6 +10,10 @@ public class Graduate extends Person {
         experience = new ArrayList<>();
     }
 
+    public String toString(){
+        System.out.println("experience : "+experience.toString());
+        return super.toString()+" "+graduationYear+" "+experience.toString();
+    }
     public Graduate(String name, String gender, String phone, String about, String age, String mail,
             String password, String img, String graduationYear) {
         this.name = name;
