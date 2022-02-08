@@ -25,9 +25,9 @@ public class Database {
     public Database(char type) {
         tableName = (type == 'S') ? "student" : "graduate";
     }
-
+    String loggeduser = null ;
     public boolean signIn(String email, String pass) {
-
+        loggeduser = email ;
         System.out.println("Connecting database...");
 
         try {
@@ -229,6 +229,25 @@ public class Database {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
         return grad;
+    }
+    public void postdb(String email,String post) {
+
+        System.out.println("Connecting database...");
+
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            Statement statement = connection.createStatement();
+            String q = "insert into posts values ('" + email + "' ,'" + post + "')";
+            System.out.println(q);
+            statement.executeUpdate(q);      
+
+            connection.close();
+            System.out.println("Database connection closed!");
+            
+        } catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
     }
 
 }

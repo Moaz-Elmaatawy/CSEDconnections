@@ -2,9 +2,15 @@
     "configurations": [
         {
             "type": "java",
+<<<<<<< Updated upstream
             "name": "Launch BackendApplication",
             "request": "launch",
             "mainClass": "com.connect.backend.Controllers.BackendApplication",
+=======
+            "name": "Launch Database",
+            "request": "launch",
+            "mainClass": "com.connect.backend.Database",
+>>>>>>> Stashed changes
             "projectName": "backend"
         },
         {

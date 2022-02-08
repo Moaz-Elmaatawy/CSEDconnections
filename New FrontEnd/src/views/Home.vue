@@ -18,7 +18,7 @@
        
       </v-col>
     <v-row>
-      <v-col v-for="graduate in graduates" :key="graduate.email" md="3">
+      <v-col v-for="graduate in graduates" :key="graduate.email" md="8">
         <graduate-card v-bind="graduate"></graduate-card>
       </v-col>
     </v-row>
