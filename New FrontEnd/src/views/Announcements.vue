@@ -2,7 +2,7 @@
   <v-container>
       <v-col>
         <v-div>
-        <v-btn large outlined rounded  @click="goToHome"> Home </v-btn> <v-btn large outlined rounded> Announcements </v-btn> <v-btn click="goToCreatePost" class="createbtn" large outlined  > Create Post </v-btn> <br><br>
+        <v-btn large outlined rounded  @click="goToHome"> Home </v-btn> <v-btn large outlined rounded> Announcements </v-btn> <v-btn @click="goToCreatePost" class="createbtn" large outlined> Create Post </v-btn> <br><br>
         </v-div>
         <v-text-field
           label="Search"
@@ -80,7 +80,7 @@ export default {
     },    
     goToCreatePost() {
       this.$router.push({
-        name: "CreatePost",
+        name: 'PostAnouncement',
       });
     },
     getPosts() {

@@ -17,7 +17,7 @@ import com.connect.backend.Controllers.post;
 public class Database {
     private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
     private String username = "root";
-    private String password = "CSED";
+    private String password = "A1072000a";
     private String tableName;
 
     public Database() {

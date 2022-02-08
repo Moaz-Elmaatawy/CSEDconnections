@@ -2,7 +2,7 @@
 
   <v-container>
       <v-col>
-        <v-btn large outlined rounded> Home </v-btn> <v-btn  @click="goToAnnoucement" large outlined rounded> Announcements </v-btn> <br><br>
+        <v-btn large outlined rounded> Home </v-btn> <v-btn  @click="goToAnnoucement" large outlined rounded> Announcements </v-btn><v-btn click="goToCreatePost" class="createbtn0" large outlined  > Log Out </v-btn> <br><br>
         <v-text-field
           label="Search"
           v-model="search"
@@ -18,7 +18,7 @@
        
       </v-col>
     <v-row>
-      <v-col v-for="graduate in graduates" :key="graduate.email" md="8">
+      <v-col v-for="graduate in graduates" :key="graduate.email" md="3">
         <graduate-card v-bind="graduate"></graduate-card>
       </v-col>
     </v-row>
@@ -101,3 +101,8 @@ export default {
   },
 };
 </script>
+<style>
+.createbtn0 {
+    margin-left:750px;
+}
+</style>
