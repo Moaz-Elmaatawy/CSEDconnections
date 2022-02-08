@@ -5,6 +5,7 @@ import java.util.List;
 import com.connect.backend.Controllers.DisplayController;
 import com.connect.backend.Controllers.DisplayedGrads;
 import com.connect.backend.Controllers.Graduate;
+import com.connect.backend.Controllers.PostController;
 import com.connect.backend.DatabaseLayer.Database;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -21,36 +22,14 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 @RestController
 
-public class Posts {
-
-    @GetMapping("/get_posts")
-    public String showPosts(@RequestParam(value = "Search") String search) {
-        DisplayController controller = new DisplayController();
-        List<DisplayedGrads> grads = controller.Display(search);
-
-        // System.out.println(tuple.getString("email"));
-        Gson gson = new Gson();
-        // Type listType = new TypeToken<List<DisplayedGrads>>() {
-        // }.getType();
-        java.lang.reflect.Type listType = new TypeToken<List<DisplayedGrads>>() {
-        }.getType();
-        String json = gson.toJson(grads, listType);
-        return json;
-
+public class posts {
+    @GetMapping("/post")
+    public void post(@RequestParam(value = "post") String post) {
+        
+        PostController postController = new PostController() ;
+        postController.post(new Sign().getuser(),post);
+   
     }
-
-    Graduate ReqGraduate ;
-    @GetMapping("/getGraduate")
-    public String opengraduate(@RequestParam(value = "email") String email ) {
-        //System.out.println("sssssssssssssssssssssss " + email );
-        DisplayController controller = new DisplayController();
-        Graduate ReqGraduate = controller.selectGraduate(email);
-
-        Gson gson = new Gson();
-        java.lang.reflect.Type type = new TypeToken<Graduate>() {
-        }.getType();
-        String json = gson.toJson(ReqGraduate, type);
-        // System.out.println(json);
-        return json;
-    }
+    
+    
 }
