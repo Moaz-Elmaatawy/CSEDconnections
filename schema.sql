@@ -81,9 +81,10 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `csedconnections`.`posts`
 -- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `csedconnections`.`posts` (
-  `email` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(20) NOT NULL,
+  `email` VARCHAR(200) NOT NULL,
+  `name` VARCHAR(200) NOT NULL,
   `post` VARCHAR(10000) NOT NULL,
 
   CONSTRAINT `posts_ibfk_1`
@@ -95,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `csedconnections`.`posts` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
-CREATE TABLE `csedconnections`.`sociallinks` (
+CREATE TABLE IF NOT EXISTS `csedconnections`.`sociallinks` (
   `email` VARCHAR(45) NOT NULL,
   `facebook` VARCHAR(200) NULL,
   `linkedin` VARCHAR(200) NULL,

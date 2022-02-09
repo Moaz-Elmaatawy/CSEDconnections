@@ -18,7 +18,7 @@ import com.connect.backend.Controllers.post;
 public class Database {
     private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
     private String username = "root";
-    private String password = "CSED";
+    private String password = "root";
     private String tableName;
 
     public Database() {
@@ -27,9 +27,11 @@ public class Database {
     public Database(char type) {
         tableName = (type == 'S') ? "student" : "graduate";
     }
-    String loggeduser = null ;
+
+    String loggeduser = null;
+
     public boolean signIn(String email, String pass) {
-        loggeduser = email ;
+        loggeduser = email;
         System.out.println("Connecting database...");
 
         try {
@@ -232,7 +234,8 @@ public class Database {
         }
         return grad;
     }
-    public void createPost(String email, String name ,String post) {
+
+    public void createPost(String email, String name, String post) {
 
         System.out.println("Connecting database...");
 
@@ -240,19 +243,19 @@ public class Database {
             Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();
-            String q = "insert into posts values ('" + email+"' ,' " + name+ " ' ,'" + post + "')";
+            String q = "insert into posts values ('" + email + "' ,' " + name + " ' ,'" + post + "')";
             System.out.println(q);
-            statement.executeUpdate(q);      
+            statement.executeUpdate(q);
 
             connection.close();
             System.out.println("Database connection closed!");
-            
+
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
     }
 
-    public List<post> getPosts(){
+    public List<post> getPosts() {
         List<post> posts = new ArrayList<>();
 
         System.out.println("Connecting database...");
@@ -272,7 +275,6 @@ public class Database {
                     POST.email = tuple.getString("email");
                     POST.name = tuple.getString("name");
                     POST.post = tuple.getString("post");
-                    
 
                     System.out.println("2222222222222222222");
                 } catch (SQLException e) {
@@ -292,7 +294,8 @@ public class Database {
         }
         return posts;
     }
-    public void AddSocialdb(String email, String facebook ,String linkedin) {
+
+    public void AddSocialdb(String email, String facebook, String linkedin) {
 
         System.out.println("Connecting database...");
 
@@ -300,17 +303,18 @@ public class Database {
             Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();
-            String q = "insert into sociallinks values ('" + email+"' ,' " + facebook+ " ' ,'" + linkedin + "')";
+            String q = "insert into sociallinks values ('" + email + "' ,' " + facebook + " ' ,'" + linkedin + "')";
             System.out.println(q);
-            statement.executeUpdate(q);      
+            statement.executeUpdate(q);
 
             connection.close();
             System.out.println("Database connection closed!");
-            
+
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
     }
+
     public Social getsocialdb(String email) {
         Social social = new Social();
         System.out.println("Connecting database...");
@@ -328,9 +332,9 @@ public class Database {
 
             while (tuple.next()) {
                 System.out.println("33333333333333");
-                social.facebook = tuple.getString("facebook") ;
-                social.linkedin = tuple.getString("linkedin") ;
-            
+                social.facebook = tuple.getString("facebook");
+                social.linkedin = tuple.getString("linkedin");
+
                 System.out.println("1111111111111111111");
             }
 
