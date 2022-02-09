@@ -28,9 +28,14 @@ public class posts {
     public void post(@RequestParam(value = "post") String post) {
         
         PostController postController = new PostController() ;
+<<<<<<< Updated upstream
         postController.createPost(SignController.user.mail,SignController.user.name,post);
         //System.out.println(SignController.user.toString());
         System.out.println("poooooooooooost : :"+( SignController.user.mail)+" "+SignController.user.name +" " + post);
+=======
+        postController.createPost(new Sign().getuser(),"name",post);
+        
+>>>>>>> Stashed changes
     }
     
     @GetMapping("/getPosts")

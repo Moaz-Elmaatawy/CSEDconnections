@@ -1,5 +1,7 @@
 package com.connect.backend.Controllers;
 
+import com.connect.backend.DatabaseLayer.Database;
+
 public class SignController {
     private char type;
     
@@ -36,5 +38,12 @@ public class SignController {
             return 0;
         return 1;
     }
+    public void addsocial(String email,String facebook,String linkedin) {
+       Database database = new Database() ;
+       database.AddSocialdb(email, facebook, linkedin);
+       
+       
+    }
+
 
 }

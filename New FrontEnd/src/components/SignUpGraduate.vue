@@ -12,6 +12,14 @@
           <label for="user">Name</label>
           <input class="rectangle" type="text" v-model="name"  placeholder="Name" maxlength="30" required/>
         </div>
+        <div class="form-group">
+          <label for="user">FaceBook</label>
+          <input class="rectangle" type="text" v-model="facebook"  placeholder="Your FaceBook"  required/>
+        </div>
+        <div class="form-group">
+          <label for="user">LinkedIn</label>
+          <input class="rectangle" type="text" v-model="linkedin"  placeholder="Your LinkedIn"  required/>
+        </div>
 
         <div class="form-group">
           <label for="user">Age</label>
@@ -110,6 +118,8 @@ export default {
       information:[],
       
       name: '',
+      facebook: '',
+      linkedin: '',
       age: '',
       gender: '',
       phone:'',
@@ -215,7 +225,8 @@ export default {
               name:this.name, age:this.age,
               gender:this.gender, phone:this.phone, profilePicture:this.profilePicture,
               about:this.about, graduationyear:this.graduationyear, position:this.position,
-              company:this.company, location:this.location, email:this.email, pass1word:this.pass1word
+              company:this.company, location:this.location, email:this.email, pass1word:this.pass1word,
+              facebook:this.facebook,linkedin:this.linkedin
               }        
           }
       ).then(Response=>{

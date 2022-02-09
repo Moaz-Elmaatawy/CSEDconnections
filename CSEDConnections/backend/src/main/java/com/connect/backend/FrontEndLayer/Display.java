@@ -5,6 +5,11 @@ import java.util.List;
 import com.connect.backend.Controllers.DisplayController;
 import com.connect.backend.Controllers.DisplayedGrads;
 import com.connect.backend.Controllers.Graduate;
+<<<<<<< Updated upstream
+=======
+import com.connect.backend.Controllers.Social;
+import com.connect.backend.DatabaseLayer.Database;
+>>>>>>> Stashed changes
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -45,6 +50,20 @@ public class Display {
         java.lang.reflect.Type type = new TypeToken<Graduate>() {
         }.getType();
         String json = gson.toJson(ReqGraduate, type);
+        // System.out.println(json);
+        return json;
+    }
+    @GetMapping("/getsocial")
+    public String getsocial(@RequestParam(value = "email") String email ) {
+        //System.out.println("sssssssssssssssssssssss " + email );
+        
+        Database database = new Database();
+       Social social = database.getsocialdb(email);
+
+        Gson gson = new Gson();
+        java.lang.reflect.Type type = new TypeToken<Social>() {
+        }.getType();
+        String json = gson.toJson(social, type);
         // System.out.println(json);
         return json;
     }
