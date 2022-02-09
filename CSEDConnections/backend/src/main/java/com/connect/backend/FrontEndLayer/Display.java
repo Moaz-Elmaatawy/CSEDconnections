@@ -5,11 +5,8 @@ import java.util.List;
 import com.connect.backend.Controllers.DisplayController;
 import com.connect.backend.Controllers.DisplayedGrads;
 import com.connect.backend.Controllers.Graduate;
-<<<<<<< Updated upstream
-=======
 import com.connect.backend.Controllers.Social;
 import com.connect.backend.DatabaseLayer.Database;
->>>>>>> Stashed changes
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

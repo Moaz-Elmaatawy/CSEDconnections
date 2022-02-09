@@ -16,13 +16,9 @@ import com.connect.backend.Controllers.Student;
 import com.connect.backend.Controllers.post;
 
 public class Database {
-    private String url = "jdbc:mysql://127.0.0.1:3300/csedconnections";
+    private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
     private String username = "root";
-<<<<<<< Updated upstream
-    private String password = "CSED";
-=======
-    private String password = "";
->>>>>>> Stashed changes
+    private String password = "A1072000a";
     private String tableName;
 
     public Database() {
