@@ -87,7 +87,7 @@ export default {
       //when the page loads we call the api 
       //to get posts data retrieved from database
       
-      axios.get('http://localhost:8085/get_graduates',{
+      axios.get('http://localhost:8085/getPosts',{
             params: {
               Search:this.search
             }

@@ -8,7 +8,7 @@
          <button class="button" @click=Post()>Post Announcement</button>
           
     </div>
-    
+     
 </template>
 
 <script>
@@ -19,13 +19,17 @@ export default {
   data() {
     return {      
       post: '',
+      name: '',
+      email: '',
     }
   },
   methods: {
       Post(){
           axios.get('http://localhost:8085/post',{
             params: {
-              post:this.post
+              post:this.post,
+              name:this.name,
+              email:this.email
             }
         })
       }

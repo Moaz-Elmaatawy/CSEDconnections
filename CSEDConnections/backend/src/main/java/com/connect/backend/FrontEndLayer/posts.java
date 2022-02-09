@@ -1,4 +1,5 @@
 package com.connect.backend.FrontEndLayer;
+import com.connect.backend.Controllers.*;
 
 import java.util.List;
 
@@ -27,9 +28,26 @@ public class posts {
     public void post(@RequestParam(value = "post") String post) {
         
         PostController postController = new PostController() ;
-        postController.post(new Sign().getuser(),post);
-        
+        postController.createPost(SignController.user.mail,SignController.user.name,post);
+        //System.out.println(SignController.user.toString());
+        System.out.println("poooooooooooost : :"+( SignController.user.mail)+" "+SignController.user.name +" " + post);
     }
     
+    @GetMapping("/getPosts")
+    public String showgraduates(@RequestParam(value = "Search") String search) {
+        DisplayPosts controller = new DisplayPosts();
+        List<post> posts = controller.Display(search);
+
+        // System.out.println(tuple.getString("email"));
+        Gson gson = new Gson();
+        // Type listType = new TypeToken<List<DisplayedGrads>>() {
+        // }.getType();
+        java.lang.reflect.Type listType = new TypeToken<List<post>>() {
+        }.getType();
+        String json = gson.toJson(posts, listType);
+        return json;
+
+    }
+
     
 }

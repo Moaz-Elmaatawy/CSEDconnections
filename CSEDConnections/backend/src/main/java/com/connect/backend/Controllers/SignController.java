@@ -2,14 +2,21 @@ package com.connect.backend.Controllers;
 
 public class SignController {
     private char type;
-
+    
+    public static Graduate user;
     public SignController(char t) {
         type = t;
     }
 
     public boolean signIn(String email, String password) {
         Data data = new Data(type);
-        return data.checkSignIn(email, password);
+
+        boolean validSignIn= data.checkSignIn(email, password);
+        if(validSignIn){
+            user =data.opengraduate(email);
+            //System.out.println("--->"+user.mail.toString());
+        }
+        return validSignIn;
     }
 
     public int signUp(Graduate newGrad) {

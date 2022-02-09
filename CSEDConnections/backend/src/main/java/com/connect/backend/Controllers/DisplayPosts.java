@@ -9,6 +9,7 @@ public class DisplayPosts {
             Search sh = new Search();
             posts = sh.searchPosts(posts, search);
         }
+        System.out.println("postes :: "+ posts.toString());
         return posts;
     }
 

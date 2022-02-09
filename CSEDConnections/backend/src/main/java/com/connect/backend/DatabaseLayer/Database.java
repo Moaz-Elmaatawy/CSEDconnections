@@ -17,7 +17,7 @@ import com.connect.backend.Controllers.post;
 public class Database {
     private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
     private String username = "root";
-    private String password = "A1072000a";
+    private String password = "CSED";
     private String tableName;
 
     public Database() {
@@ -269,8 +269,8 @@ public class Database {
                 post POST = new post();
                 try {
                     POST.email = tuple.getString("email");
-                    POST.email = tuple.getString("name");
-                    POST.email = tuple.getString("post");
+                    POST.name = tuple.getString("name");
+                    POST.post = tuple.getString("post");
                     
 
                     System.out.println("2222222222222222222");
