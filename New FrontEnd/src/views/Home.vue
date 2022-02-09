@@ -2,7 +2,7 @@
 
   <v-container>
       <v-col>
-        <v-btn large outlined rounded> Home </v-btn> <v-btn  @click="goToAnnoucement" large outlined rounded> Announcements </v-btn><v-btn click="goToCreatePost" class="createbtn0" large outlined  > Log Out </v-btn> <br><br>
+        <v-btn large outlined rounded> Home </v-btn> <v-btn  @click="goToAnnoucement" large outlined rounded> Announcements </v-btn><v-btn @click="goToStart" class="createbtn0" large outlined  > Log Out </v-btn> <br><br>
         <v-text-field
           label="Search"
           v-model="search"
@@ -78,6 +78,12 @@ export default {
     goToAnnoucement() {
       this.$router.push({
         name: "Announcements",
+      });
+    },
+
+    goToStart() {
+     this.$router.push({
+        name: "Start",
       });
     },
     

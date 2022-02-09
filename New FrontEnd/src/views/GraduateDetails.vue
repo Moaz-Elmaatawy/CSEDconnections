@@ -34,10 +34,10 @@
                   <div><b>Phone: </b>{{ graduate.phone }}</div>
                   <div><b>about: </b>{{ graduate.about }}</div>
                   <a :href= "social.facebook"  target="_blank" >
-        <img alt="facebook" src="https://annashra.org/wp-content/uploads/2018/10/logo-facebook.png">
+        <img class="facebook0" alt="facebook" src="https://annashra.org/wp-content/uploads/2018/10/logo-facebook.png">
      </a>
      <a :href= "social.linkedin"  target="_blank" >
-        <img alt="linkedin" src="https://image.similarpng.com/very-thumbnail/2020/07/Linkedin-logo-transparent-PNG.png">
+        <img class="facebook0" alt="linkedin" src="https://image.similarpng.com/very-thumbnail/2020/07/Linkedin-logo-transparent-PNG.png">
      </a>
                   
                 </div>
@@ -147,4 +147,8 @@ export default {
 </script>
 
 <style>
+.facebook0 {
+height: 50px;
+width:50px;
+}
 </style>
