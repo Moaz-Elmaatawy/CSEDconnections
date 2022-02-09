@@ -2,6 +2,7 @@ package com.connect.backend.Controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Search {
     List<post> searchPosts(List<post> p ,String s){
@@ -9,6 +10,7 @@ public class Search {
         List<post> result=  new ArrayList<>();
 
         for(int i=0;i<p.size();++i){
+            System.out.println(p.get(i).toString());
             if(match(p.get(i).toString(),s)){
                 result.add(p.get(i));
             }
@@ -21,7 +23,7 @@ public class Search {
         List<Graduate> result=  new ArrayList<>();
 
         for(int i=0;i<g.size();++i){
-            if(match(g.get(i).toString(),s) ){
+            if(match(g.get(i).toString(),s) || match(g.get(i).experience.toString(),s) ){
                 result.add(g.get(i));
             }
 
@@ -35,7 +37,8 @@ public class Search {
         
         // search in the text for s
         for(String word : keyWords){
-            if(text.matches("(.*)"+word+"(.*)"))
+            System.out.println("======="+word);
+            if(Pattern.matches(new String("(.*)"+word+"(.*)"),text))
                 return true;
         } 
         
