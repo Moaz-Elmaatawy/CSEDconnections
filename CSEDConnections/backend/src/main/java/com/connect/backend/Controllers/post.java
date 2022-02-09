@@ -6,7 +6,7 @@ public class post {
     public String post;
 
     public String toString(){
-        return name+ " "+ "email"+" "+post;
+        return name+ " "+ email+" "+post;
     }
 }
 
