@@ -91,9 +91,21 @@ CREATE TABLE IF NOT EXISTS `csedconnections`.`posts` (
     REFERENCES `csedconnections`.`graduate` (`email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+    
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
+CREATE TABLE `csedconnections`.`sociallinks` (
+  `email` VARCHAR(45) NOT NULL,
+  `facebook` VARCHAR(200) NULL,
+  `linkedin` VARCHAR(200) NULL,
+  PRIMARY KEY (`email`),
+FOREIGN KEY (`email`)
+    REFERENCES `csedconnections`.`graduate` (`email`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
