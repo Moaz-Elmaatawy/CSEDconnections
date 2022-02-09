@@ -1,14 +1,17 @@
 <template>
-  
-    <div >
-        <a>Your Announcement</a>
+      <v-container >
+        <div class="yoyo">
+        <h2>Your Announcement</h2>
+        </div>
         <br>
+        <div class="yoyo">
         <textarea id="txt" v-model="post" placeholder="Your Post"></textarea>
+        </div>
         <br>
-         <button class="button" @click=Post()>Post Announcement</button>
-          
-    </div>
-     
+         <v-btn class="p1" @click=goToAnnoucement()>Back</v-btn>
+         <v-btn class="p2"  @click=Post()>Post Announcement</v-btn>
+
+        </v-container>
 </template>
 
 <script>
@@ -32,15 +35,23 @@ export default {
               email:this.email
             }
         })
-      }
+        this.$router.push({
+        name: "Announcements",
+      });
+      },
+          goToAnnoucement() {
+      this.$router.push({
+        name: "Announcements",
+      });
+    },
   }
 };
+
 </script>
 <style>
 
 #txt{
-
- width: 50%;
+  width: 50%;
   height: 200px;
   padding: 12px 20px;
   box-sizing: border-box;
@@ -49,19 +60,22 @@ export default {
   background-color: #f8f8f8;
   font-size: 16px;
   resize: none;
-  
+-moz-box-align: center;  
 
 }
-.button {
-  background-color: #3c3fcf; 
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
- 
-  cursor: pointer;
+
+.yoyo{
+      display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.p1{
+  margin-left: 290px;
+
+}
+.p2{
+  margin-left: 300px;
 }
 </style>
