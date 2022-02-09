@@ -37,7 +37,7 @@
         <img class="facebook0" alt="facebook" src="https://annashra.org/wp-content/uploads/2018/10/logo-facebook.png">
      </a>
      <a :href= "social.linkedin"  target="_blank" >
-        <img class="facebook0" alt="linkedin" src="https://image.similarpng.com/very-thumbnail/2020/07/Linkedin-logo-transparent-PNG.png">
+        <img class="facebook0" alt="linkedin" src="https://denkavit.com/en/wp-content/uploads/sites/8/2021/11/LinkedIn-logo.png">
      </a>
                   
                 </div>
