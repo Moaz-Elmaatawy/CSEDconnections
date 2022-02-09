@@ -18,6 +18,7 @@ public class DisplayController {
         Data data = new Data('G');
         return data.opengraduate(email);
     }
+    
 
     private List<DisplayedGrads> convertGrads(List<Graduate> grads) {
         List<DisplayedGrads> displayedgrads = new ArrayList<>();

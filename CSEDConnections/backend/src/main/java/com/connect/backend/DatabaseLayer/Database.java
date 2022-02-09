@@ -11,13 +11,18 @@ import java.util.List;
 import com.connect.backend.Controllers.DisplayedGrads;
 import com.connect.backend.Controllers.Experience;
 import com.connect.backend.Controllers.Graduate;
+import com.connect.backend.Controllers.Social;
 import com.connect.backend.Controllers.Student;
 import com.connect.backend.Controllers.post;
 
 public class Database {
-    private String url = "jdbc:mysql://127.0.0.1:3306/csedconnections";
+    private String url = "jdbc:mysql://127.0.0.1:3300/csedconnections";
     private String username = "root";
+<<<<<<< Updated upstream
     private String password = "CSED";
+=======
+    private String password = "";
+>>>>>>> Stashed changes
     private String tableName;
 
     public Database() {
@@ -290,5 +295,54 @@ public class Database {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
         return posts;
+    }
+    public void AddSocialdb(String email, String facebook ,String linkedin) {
+
+        System.out.println("Connecting database...");
+
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            Statement statement = connection.createStatement();
+            String q = "insert into sociallinks values ('" + email+"' ,' " + facebook+ " ' ,'" + linkedin + "')";
+            System.out.println(q);
+            statement.executeUpdate(q);      
+
+            connection.close();
+            System.out.println("Database connection closed!");
+            
+        } catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
+    }
+    public Social getsocialdb(String email) {
+        Social social = new Social();
+        System.out.println("Connecting database...");
+
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            Statement statement = connection.createStatement();
+
+            ResultSet tuple = statement.executeQuery(
+                    "select * " +
+                            "from graduate JOIN sociallinks " +
+                            "on sociallinks.email=graduate.email" +
+                            " where graduate.email='" + email + "'");
+
+            while (tuple.next()) {
+                System.out.println("33333333333333");
+                social.facebook = tuple.getString("facebook") ;
+                social.linkedin = tuple.getString("linkedin") ;
+            
+                System.out.println("1111111111111111111");
+            }
+
+            connection.close();
+            System.out.println("Database connection closed!");
+        } catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
+        return social;
     }
 }

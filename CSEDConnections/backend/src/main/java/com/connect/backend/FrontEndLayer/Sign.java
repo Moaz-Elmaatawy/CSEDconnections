@@ -42,14 +42,20 @@ public class Sign {
             @RequestParam(value = "location") String location,
             @RequestParam(value = "position") String position,
             @RequestParam(value = "phone") String phone,
-            @RequestParam(value = "pass1word") String pass1word) {
-
+            @RequestParam(value = "pass1word") String pass1word,
+            @RequestParam(value = "facebook") String facebook,
+            @RequestParam(value = "linkedin") String linkedin
+            ) {
+        
         System.out.println("signup!!1");
         Graduate grad = new Graduate(name, gender, phone, about, age, email, pass1word, profilePicture, graduationyear);
         SignController controller = new SignController('G');
+        
         grad.addExperience(new Experience(company, location, position));
         int result = controller.signUp(grad);
+
         System.out.println(result + "signup!!2");
+        controller.addsocial(email, facebook, linkedin);
         if (result == 0) {
             return "Signed up Sucssefully!";
         } else if (result == 2) {

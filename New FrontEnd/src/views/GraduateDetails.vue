@@ -33,6 +33,13 @@
                   <div><b>Contact: </b>{{ graduate.mail }}</div>
                   <div><b>Phone: </b>{{ graduate.phone }}</div>
                   <div><b>about: </b>{{ graduate.about }}</div>
+                  <a :href= "social.facebook"  target="_blank" >
+        <img alt="facebook" src="https://annashra.org/wp-content/uploads/2018/10/logo-facebook.png">
+     </a>
+     <a :href= "social.linkedin"  target="_blank" >
+        <img alt="linkedin" src="https://image.similarpng.com/very-thumbnail/2020/07/Linkedin-logo-transparent-PNG.png">
+     </a>
+                  
                 </div>
                 <!--div>
                   <div>
@@ -91,6 +98,7 @@ export default {
   data() {
     return {
       graduate: {},
+      social: {},
       graduateEmail: "",
       experience: [],
     };
@@ -106,6 +114,7 @@ export default {
         let data = atob(this.$route.params.code);
         this.graduateEmail = data;
         this.getGraduateDetail();
+        this.getsocial() ;
       }  
     },
     getGraduateDetail() {
@@ -116,6 +125,16 @@ export default {
         }).then(Response=>{
             this.graduate= Response.data;
             this.experience=this.graduate.experience;
+        });
+    },
+      getsocial() {
+      axios.get('http://localhost:8085/getsocial',{
+            params: {
+              email:this.graduateEmail
+            }
+        }).then(Response=>{
+            this.social= Response.data;
+            
         });
     },
     goBack() {
